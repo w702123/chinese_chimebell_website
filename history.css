@@ -1,0 +1,145 @@
+/* Base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Inter", sans-serif;
+  }
+  
+  /* Page container */
+  .page-container {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
+  }
+  
+  /* Header styles */
+  .header {
+    display: flex;
+    align-items: center;
+    height: 75px;
+    padding: 0 100px;
+    border-bottom: 1px solid #e5e7eb;
+    background-color: #fff;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  
+  .book-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .site-title {
+    margin-left: 28px;
+    color: #000;
+    font-size: 20px;
+    font-weight: 700;
+  }
+  
+  .nav-links {
+    display: flex;
+    margin-left: auto;
+    gap: 68px;
+  }
+  
+  .nav-item {
+    color: #1c1b1c;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  
+  .nav-item:hover {
+    text-decoration: underline;
+  }
+  
+  /* Content container */
+  .content-container {
+    padding: 28px 207px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    background-color: #fafafa;
+  }
+  
+  /* Content card */
+  .content-card {
+    border-radius: 8px;
+    border: 1px solid #e5e5e5;
+    padding: 25px 38px;
+    width: 1027px;
+    background-color: #fff;
+  }
+  
+  .card-title {
+    color: #000;
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+  
+  .card-image {
+    width: 950px;
+    height: 192px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  .card-description {
+    color: #525252;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 16px;
+  }
+  
+  /* Media queries */
+  @media (max-width: 991px) {
+    .header {
+      padding: 0 20px;
+    }
+  
+    .nav-links {
+      display: none;
+    }
+  
+    .content-container {
+      padding: 28px 40px;
+    }
+  
+    .content-card {
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .card-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .header {
+      height: 60px;
+    }
+  
+    .site-title {
+      font-size: 16px;
+    }
+  
+    .content-container {
+      padding: 20px;
+    }
+  
+    .content-card {
+      padding: 15px;
+    }
+  }
+  

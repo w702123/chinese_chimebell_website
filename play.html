@@ -1,145 +1,124 @@
-<!-- Interactive Chime Bells Player Page -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chime Bells Player</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="play.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <!-- Top navigation bar -->
-        <!-- Logo and site name -->
-        <div class="logo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM10.7828 7.99043L16.4265 11.1258C17.1123 11.5068 17.1123 12.4932 16.4265 12.8742L10.7828 16.0096C9.98293 16.4539 9 15.8756 9 14.9606V9.03942C9 8.12444 9.98293 7.54607 10.7828 7.99043Z" fill="#222222"/>
-          </svg>
-          <h1>Chime Bells Player</h1>
-        </div>
-
-        <!-- Navigation menu -->
-        <!-- Reference: https://www.w3schools.com/howto/howto_js_topnav_responsive.asp -->
-        <nav class="topnav" id="myTopnav">
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="history.html">Learn</a></li>
-            <li><a href="play.html" class="active">Play</a></li>
-            <li><a href="library.html">Library</a></li>
-          </ul>
-          <!--Responsive Top Navigation/Hamburger Menu -->
-          <button class="menu-toggle" id="menuToggle">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
-              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-              <path d="M4 6l16 0"></path>
-              <path d="M4 12l16 0"></path>
-              <path d="M4 18l16 0"></path>
-            </svg>
-          </button>
+    <div class="app">
+      <header class="header">
+        <img
+          src="https://cdn.builder.io/api/v1/image/assets/TEMP/ab4faa8ab9c7770852dc38af013c1bfdbe34976c"
+          alt="Video fill icon"
+          class="header-icon"
+        />
+        <h1 class="header-title">Chime Bells Player</h1>
+        <nav class="nav-links">
+          <a href="#" class="nav-item">Home</a>
+          <a href="#" class="nav-item">Learn</a>
+          <a href="#" class="nav-item">Play</a>
+          <a href="#" class="nav-item">Library</a>
         </nav>
       </header>
 
-      <!-- Main content area -->
       <main class="main-content">
-        <!-- Tab switcher for player/tutorial -->
-        <div class="tab-navigation">
-          <button class="tab-button active">Virtual Player</button>
-          <button class="tab-button">Tutorial</button>
+        <div class="button-group">
+          <button class="virtual-player-btn">Virtual Player</button>
+          <button class="tutorial-btn">Tutorial</button>
         </div>
 
-        <!-- Virtual bells player section -->
-
-        <section class="player-section">
-          <!-- Interactive bells display -->
-          <div class="bells-container">
-            <!-- Individual bell template - repeated for A1-A10 -->
-            <div class="bell-wrapper">
+        <section class="player-container">
+          <div class="bells-grid">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A1"
                 class="bell-image"
               />
-              <span class="bell-note">A1</span>
+              <span class="bell-label">A1</span>
             </div>
-            <div class="bell-wrapper">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A2"
                 class="bell-image"
               />
-              <span class="bell-note">A2</span>
+              <span class="bell-label">A2</span>
             </div>
-            <div class="bell-wrapper">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A3"
                 class="bell-image"
               />
-              <span class="bell-note">A3</span>
+              <span class="bell-label">A3</span>
             </div>
-            <div class="bell-wrapper">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A4"
                 class="bell-image"
               />
-              <span class="bell-note">A4</span>
+              <span class="bell-label">A4</span>
             </div>
-            <div class="bell-wrapper">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A5"
                 class="bell-image"
               />
-              <span class="bell-note">A5</span>
+              <span class="bell-label">A5</span>
             </div>
-            <div class="bell-wrapper">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A6"
                 class="bell-image"
               />
-              <span class="bell-note">A6</span>
+              <span class="bell-label">A6</span>
             </div>
-            <div class="bell-wrapper">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A7"
                 class="bell-image"
               />
-              <span class="bell-note">A7</span>
+              <span class="bell-label">A7</span>
             </div>
-            <div class="bell-wrapper">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A8"
                 class="bell-image"
               />
-              <span class="bell-note">A8</span>
+              <span class="bell-label">A8</span>
             </div>
-            <div class="bell-wrapper">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A9"
                 class="bell-image"
               />
-              <span class="bell-note">A9</span>
+              <span class="bell-label">A9</span>
             </div>
-            <div class="bell-wrapper">
+            <div class="bell-item">
               <img
-                src="images/DP154556.jpg"
+                src="https://cdn.builder.io/api/v1/image/assets/TEMP/ce1391f0e005017f8272b4ff4b30cc299022e5d1"
                 alt="Bell A10"
                 class="bell-image"
               />
-              <span class="bell-note">A10</span>
+              <span class="bell-label">A10</span>
             </div>
           </div>
 
-          <!-- Player controls at bottom -->
           <div class="player-controls">
-            <!-- Volume control -->
-            <button class="volume-button">
+            <button class="volume-btn" aria-label="Volume control">
               <svg
                 width="20"
                 height="16"
@@ -148,47 +127,36 @@
                 xmlns="http://www.w3.org/2000/svg"
                 class="volume-icon"
               >
-                <g clip-path="url(#clip0_78_769)">
+                <g clip-path="url(#clip0_48_412)">
                   <path
-                    d="M16.675 1.01567C18.7031 2.66567 20 5.1813 20 8.00005C20 10.8188 18.7031 13.3375 16.675 14.9844C16.3531 15.2469 15.8812 15.1969 15.6187 14.875C15.3562 14.5532 15.4062 14.0813 15.7281 13.8188C17.4219 12.4438 18.5 10.35 18.5 8.00005C18.5 5.65005 17.4219 3.5563 15.7281 2.17817C15.4062 1.91567 15.3594 1.4438 15.6187 1.12192C15.8781 0.800046 16.3531 0.753171 16.675 1.01255V1.01567ZM14.7844 3.3438C16.1344 4.4438 17 6.12192 17 8.00005C17 9.87817 16.1344 11.5563 14.7844 12.6563C14.4625 12.9188 13.9906 12.8688 13.7281 12.5469C13.4656 12.225 13.5156 11.7532 13.8375 11.4907C14.8531 10.6657 15.5 9.40942 15.5 8.00005C15.5 6.59067 14.8531 5.33442 13.8375 4.5063C13.5156 4.2438 13.4687 3.77192 13.7281 3.45005C13.9875 3.12817 14.4625 3.0813 14.7844 3.34067V3.3438ZM12.8938 5.67192C13.5656 6.22192 14 7.05942 14 8.00005C14 8.94067 13.5656 9.77817 12.8938 10.3282C12.5719 10.5907 12.1 10.5407 11.8375 10.2188C11.575 9.89692 11.625 9.42505 11.9469 9.16255C12.2844 8.88755 12.5 8.4688 12.5 8.00005C12.5 7.5313 12.2844 7.11255 11.9469 6.83442C11.625 6.57192 11.5781 6.10005 11.8375 5.77817C12.0969 5.4563 12.5719 5.40942 12.8938 5.6688V5.67192ZM9.40938 1.08755C9.76875 1.25005 10 1.6063 10 2.00005V14C10 14.3938 9.76875 14.75 9.40938 14.9125C9.05 15.075 8.62813 15.0094 8.33438 14.7469L4.11875 11H2C0.896875 11 0 10.1032 0 9.00005V7.00005C0 5.89692 0.896875 5.00005 2 5.00005H4.11875L8.33438 1.25317C8.62813 0.990671 9.05 0.928171 9.40938 1.08755Z"
+                    d="M16.675 1.01567C18.7031 2.66567 20 5.1813 20 8.00005C20 10.8188 18.7031 13.3375 16.675 14.9844C16.3531 15.2469 15.8812 15.1969 15.6187 14.875C15.3562 14.5532 15.4062 14.0813 15.7281 13.8188C17.4219 12.4438 18.5 10.35 18.5 8.00005C18.5 5.65005 17.4219 3.5563 15.7281 2.17817C15.4062 1.91567 15.3594 1.4438 15.6187 1.12192C15.8781 0.800046 16.3531 0.753171 16.675 1.01255V1.01567ZM14.7844 3.3438C16.1344 4.4438 17 6.12192 17 8.00005C17 9.87817 16.1344 11.5563 14.7844 12.6563C14.4625 12.9188 13.9906 12.8688 13.7281 12.5469C13.4656 12.225 13.5156 11.7532 13.8375 11.4907C14.8531 10.6657 15.5 9.40942 15.5 8.00005C15.5 6.59067 14.8531 5.33442 13.8375 4.5063C13.5156 4.2438 13.4688 3.77192 13.7281 3.45005C13.9875 3.12817 14.4625 3.0813 14.7844 3.34067V3.3438ZM12.8938 5.67192C13.5656 6.22192 14 7.05942 14 8.00005C14 8.94067 13.5656 9.77817 12.8938 10.3282C12.5719 10.5907 12.1 10.5407 11.8375 10.2188C11.575 9.89692 11.625 9.42505 11.9469 9.16255C12.2844 8.88755 12.5 8.4688 12.5 8.00005C12.5 7.5313 12.2844 7.11255 11.9469 6.83442C11.625 6.57192 11.5781 6.10005 11.8375 5.77817C12.0969 5.4563 12.5719 5.40942 12.8938 5.6688V5.67192ZM9.40938 1.08755C9.76875 1.25005 10 1.6063 10 2.00005V14C10 14.3938 9.76875 14.75 9.40938 14.9125C9.05 15.075 8.62813 15.0094 8.33438 14.7469L4.11875 11H2C0.896875 11 0 10.1032 0 9.00005V7.00005C0 5.89692 0.896875 5.00005 2 5.00005H4.11875L8.33438 1.25317C8.62813 0.990671 9.05 0.928171 9.40938 1.08755Z"
                     fill="black"
                   ></path>
                 </g>
                 <defs>
-                  <clipPath id="clip0_78_769">
+                  <clipPath id="clip0_48_412">
                     <path d="M0 0H20V16H0V0Z" fill="white"></path>
                   </clipPath>
                 </defs>
               </svg>
             </button>
 
-            <!-- Save and share buttons -->
             <div class="action-buttons">
-              <button class="action-button">Save</button>
-              <button class="action-button">Share</button>
+              <button class="save-btn">Save</button>
+              <button class="share-btn">Share</button>
             </div>
           </div>
         </section>
 
-        <!-- Tutorial section with How to use instructions -->
-        <section class="tutorial-section">
-          <h2 class="tutorial-title">Tutorial</h2>
-          <div class="tutorial-content">
-            <p>1. Click on any bell image to play its sound (A1 - A10).</p>
-            <p>2. Click multiple bells to create your own melody.</p>
-            <p>
-              3. Adjust the volume using the slider in the bottom-left corner.
-            </p>
-            <p>
-              4. Save your music by clicking the "Save" button in the
-              bottom-right corner.
-            </p>
-            <p>5. Share your creation with others using the "Share" button.</p>
-            <p>Enjoy making your own bianzhong music!</p>
+        <section class="tutorial-container">
+          <h2 class="tutorial-title">Practice Tutorial</h2>
+          <div class="tutorial-steps">
+            <p>1. Click Image</p>
+            <p>2. Compose music</p>
+            <p>3. Save & Share Your Work!</p>
           </div>
         </section>
       </main>
     </div>
   </body>
-  <script src="index.js"></script>
 </html>
