@@ -1,184 +1,242 @@
+<!-- Music Library page  -->
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chime Bells Library</title>
-    <link rel="stylesheet" href="library.css" />
+    <link rel="stylesheet" href="index.css" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
   </head>
   <body>
-    <div class="chime-bell-page">
-      <header class="site-header">
-        <div class="logo-container">
-          <img
-            src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/c028d66364f805f602b97e964ce80bb895b4c0bf3f0e1dff72c8a4172f857540?placeholderIfAbsent=true"
-            alt="Chime Bells Logo"
-            class="logo-image"
-          />
-          <h1 class="site-title">Chime Bells Library</h1>
+    <div class="wrapper">
+      <header>
+        <!-- Top navigation bar -->
+        <!-- Website logo and name -->
+        <div class="logo">
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M19 15.9505V14H16.2525C16.018 14 15.9008 14 15.802 14.0098C14.854 14.1041 14.1041 14.854 14.0098 15.802C14 15.9008 14 16.018 14 16.2525C14 16.5322 14 16.6721 14.0124 16.7831C14.1332 17.8609 15.0909 18.646 16.1714 18.553C16.2827 18.5435 16.4199 18.516 16.6942 18.4612L16.9903 18.4019C17.3708 18.3258 17.561 18.2878 17.7215 18.2257C18.3765 17.9724 18.8506 17.394 18.9706 16.7021C19 16.5325 19 16.3385 19 15.9505ZM9 17.9505V16H6.25245C6.018 16 5.90078 16 5.80205 16.0098C4.85403 16.1041 4.10411 16.854 4.00982 17.802C4 17.9008 4 18.018 4 18.2525C4 18.5322 4 18.6721 4.01244 18.7831C4.13321 19.8609 5.0909 20.646 6.17139 20.553C6.28267 20.5435 6.41994 20.516 6.69419 20.4612L6.99029 20.4019C7.37076 20.3258 7.56099 20.2878 7.7215 20.2257C8.3765 19.9724 8.85063 19.394 8.9706 18.7021C9 18.5325 9 18.3385 9 17.9505Z"
+              fill="black"
+            ></path>
+            <path
+              d="M9 16V11M9 16V17.9505M9 16H6.25245M19 14V9M19 14V15.9505M19 14H16.2525M19 9L9 11M19 9V8.87922M9 11V9.27922M9 9.27922C9 7.70946 9 6.92459 9.45332 6.37163C9.90663 5.81867 10.6763 5.66475 12.2155 5.35689M9 9.27922V9.27922C9 7.70946 9 6.92459 9.45332 6.37163C9.45332 6.37163 9.45332 6.37163 9.45332 6.37163C9.90663 5.81867 10.6763 5.66475 12.2155 5.35689V5.35689M9 9.27922V17.9505M12.2155 5.35689L14.2155 4.95689M14.2155 4.95689C16.4291 4.51417 17.536 4.29281 18.268 4.89292C19 5.49304 19 6.62176 19 8.87922M14.2155 4.95689V4.95689C16.4291 4.51417 17.536 4.29281 18.268 4.89292C19 5.49304 19 6.62176 19 8.87922V8.87922M19 15.9505C19 16.3385 19 16.5325 18.9706 16.7021C18.8506 17.394 18.3765 17.9724 17.7215 18.2257C17.561 18.2878 17.3708 18.3258 16.9903 18.4019M19 15.9505V15.9505C19 16.3385 19 16.5325 18.9706 16.702C18.8506 17.394 18.3765 17.9724 17.7215 18.2257C17.561 18.2878 17.3708 18.3258 16.9903 18.4019V18.4019M16.9903 18.4019L16.6942 18.4612M16.6942 18.4612C16.4199 18.516 16.2827 18.5435 16.1714 18.553C15.0909 18.646 14.1332 17.8609 14.0124 16.7831C14 16.6721 14 16.5322 14 16.2525M16.6942 18.4612V18.4612C16.4199 18.516 16.2827 18.5435 16.1714 18.553C15.0909 18.646 14.1332 17.8609 14.0124 16.7831C14 16.6721 14 16.5322 14 16.2525V16.2525M14 16.2525C14 16.018 14 15.9008 14.0098 15.802C14.1041 14.854 14.854 14.1041 15.802 14.0098C15.9008 14 16.018 14 16.2525 14M14 16.2525V16.2525C14 16.018 14 15.9008 14.0098 15.8021C14.1041 14.854 14.854 14.1041 15.8021 14.0098C15.9008 14 16.018 14 16.2525 14V14M9 17.9505C9 18.3385 9 18.5325 8.9706 18.7021C8.85063 19.394 8.3765 19.9724 7.7215 20.2257C7.56099 20.2878 7.37076 20.3258 6.99029 20.4019M9 17.9505V17.9505C9 18.3385 9 18.5325 8.9706 18.7021C8.85063 19.394 8.3765 19.9724 7.7215 20.2257C7.56099 20.2878 7.37075 20.3258 6.99029 20.4019V20.4019M6.99029 20.4019L6.69419 20.4612M6.69419 20.4612C6.41994 20.516 6.28267 20.5435 6.17139 20.553C5.0909 20.646 4.13321 19.8609 4.01244 18.7831C4 18.6721 4 18.5322 4 18.2525M6.69419 20.4612V20.4612C6.41986 20.516 6.28269 20.5435 6.17139 20.553C5.0909 20.646 4.13321 19.8608 4.01244 18.7831C4 18.6721 4 18.5322 4 18.2525V18.2525M4 18.2525C4 18.018 4 17.9008 4.00982 17.802C4.10411 16.854 4.85403 16.1041 5.80205 16.0098C5.90078 16 6.018 16 6.25245 16M4 18.2525V18.2525C4 18.018 4 17.9008 4.00982 17.8021C4.10411 16.854 4.85403 16.1041 5.80205 16.0098C5.90078 16 6.01801 16 6.25245 16V16"
+              stroke="black"
+              stroke-width="2"
+            ></path>
+          </svg>
+          <h1>Chime Bells Library</h1>
         </div>
-        <nav class="main-navigation">
-          <a href="#" class="nav-link">Home</a>
-          <a href="#" class="nav-link">Learn</a>
-          <a href="#" class="nav-link">Play</a>
-          <a href="#" class="nav-link">Library</a>
+
+         <!-- Navigation menu -->
+         <!-- Reference: https://www.w3schools.com/howto/howto_js_topnav_responsive.asp -->
+        <nav class="topnav" id="myTopnav">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="history.html">Learn</a></li>
+            <li><a href="play.html">Play</a></li>
+            <li><a href="library.html" class="active">Library</a></li>
+          </ul>
+          <!--Responsive Top Navigation/Hamburger Menu -->
+          <button class="menu-toggle" id="menuToggle">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M4 6l16 0"></path>
+              <path d="M4 12l16 0"></path>
+              <path d="M4 18l16 0"></path>
+            </svg>
+          </button>
         </nav>
       </header>
 
+      <!-- Main content area -->
       <main class="main-content">
-        <section class="hero-section">
-          <div class="hero-content">
-            <h1 class="hero-title">Famous Chime Bell Pieces & Performances</h1>
-            <p class="hero-description">
-              Explore our comprehensive collection of historical and
-              contemporary chime bell performances.
-            </p>
-          </div>
-        </section>
-
-        <section class="search-section">
+        <!-- Search and upload tools -->
+        <section class="search">
           <div class="search-container">
-            <input
-              type="text"
-              class="search-input"
-              placeholder="Search performances..."
-            />
-            <img
-              src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/864340dc03307f08579a43b0171ab1b78367a6298cc24c89bac11e368744b974?placeholderIfAbsent=true"
-              alt="Filter Icon"
-              class="filter-icon"
-            />
-            <div class="style-select">
-              <span class="select-text">All Styles</span>
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/9f90192a73b36486a498a676ebdb23d6e58d71faabc58923250feac3bad15f31?placeholderIfAbsent=true"
-                alt="Dropdown Arrow"
-                class="dropdown-icon"
+            <!-- Search box with icon -->
+            <div class="search-input-wrapper">
+              <div class="search-icon">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="7"
+                    stroke="#ADAEBC"
+                    stroke-width="2"
+                  ></circle>
+                  <path
+                    d="M20 20L17 17"
+                    stroke="#ADAEBC"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  ></path>
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Search music..."
+                class="search-input"
               />
             </div>
+            <!-- Action buttons -->
             <button class="search-button">Search</button>
+            <button class="upload-button">Upload</button>
           </div>
         </section>
 
-        <section class="performances-grid">
-          <div class="performances-row">
-            <article class="performance-card">
-              <figure class="performance-media">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/02355b033134b42d7a2c16d42815d7d31bdedb9b2637cdff4764eef4a4e166d6?placeholderIfAbsent=true"
-                  alt="Song of the Bronze Bells"
-                  class="performance-thumbnail"
-                />
-              </figure>
-              <h2 class="performance-title">Song of the Bronze Bells</h2>
-              <p class="performance-metadata">
-                Era: Zhou Dynasty | Duration: 4:30
-              </p>
-              <div class="playback-controls">
-                <button class="play-button">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/0ac251c2112d61b3b2d4b61268108832d4f508f42c49c8ae93efe07e750af69f?placeholderIfAbsent=true"
-                    alt="Play"
-                    class="play-icon"
-                  />
-                </button>
-                <div class="progress-bar">
-                  <div class="progress-fill"></div>
-                </div>
-                <span class="time-display">1:30 / 4:30</span>
+        <!-- Music collection grid -->
+        <section class="music-grid">
+          <!-- Music card template - repeated for each song -->
+          <article class="music-card">
+            <!-- Song thumbnail -->
+            <img
+              src="images/1.png"
+              alt="Scarborough Fair"
+              class="music-image"
+            />
+            
+            <!-- Song info -->
+            <h3 class="music-title">Scarborough Fair</h3>
+            <p class="music-duration">Duration: 4:30</p>
+            
+            <!-- Playback controls -->
+            <div class="player-controls">
+              <button class="play-button">
+                <svg
+                  width="12"
+                  height="16"
+                  viewBox="0 0 12 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0H12V16H0V0Z" stroke="#E5E7EB"></path>
+                  <path
+                    d="M2.28125 1.21872C1.81875 0.934346 1.2375 0.924971 0.765625 1.1906C0.29375 1.45622 0 1.95622 0 2.49997V13.5C0 14.0437 0.29375 14.5437 0.765625 14.8093C1.2375 15.075 1.81875 15.0625 2.28125 14.7812L11.2812 9.28122C11.7281 9.00935 12 8.52497 12 7.99997C12 7.47497 11.7281 6.99372 11.2812 6.71872L2.28125 1.21872Z"
+                    fill="black"
+                  ></path>
+                </svg>
+              </button>
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
               </div>
-            </article>
+              <span class="time-display">1:30 / 4:30</span>
+            </div>
+          </article>
 
-            <article class="performance-card">
-              <figure class="performance-media video-container">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/92aa303e48fbdf634c3f9d89e99ab7a020e0b463a8d393b47f0bca2f03ac432c?placeholderIfAbsent=true"
-                  alt="Contemporary Bells Ensemble"
-                  class="performance-thumbnail"
-                />
-                <div class="play-overlay"></div>
-              </figure>
-              <h2 class="performance-title">Contemporary Bells Ensemble</h2>
-              <p class="performance-metadata">
-                Performance Date: March 15, 2025
-              </p>
-              <div class="playback-controls">
-                <button class="play-button">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/0ac251c2112d61b3b2d4b61268108832d4f508f42c49c8ae93efe07e750af69f?placeholderIfAbsent=true"
-                    alt="Play"
-                    class="play-icon"
-                  />
-                </button>
-                <div class="progress-bar">
-                  <div class="progress-fill long-progress"></div>
-                </div>
-                <span class="time-display">4:20 / 6:30</span>
+          <article class="music-card">
+            <img
+              src="images/2.png"
+              alt="Amazing Grace"
+              class="music-image"
+            />
+            <h3 class="music-title">Amazing Grace</h3>
+            <p class="music-duration">Duration: 4:30</p>
+            <div class="player-controls">
+              <button class="play-button">
+                <svg
+                  width="12"
+                  height="16"
+                  viewBox="0 0 12 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0H12V16H0V0Z" stroke="#E5E7EB"></path>
+                  <path
+                    d="M2.28125 1.21872C1.81875 0.934346 1.2375 0.924971 0.765625 1.1906C0.29375 1.45622 0 1.95622 0 2.49997V13.5C0 14.0437 0.29375 14.5437 0.765625 14.8093C1.2375 15.075 1.81875 15.0625 2.28125 14.7812L11.2812 9.28122C11.7281 9.00935 12 8.52497 12 7.99997C12 7.47497 11.7281 6.99372 11.2812 6.71872L2.28125 1.21872Z"
+                    fill="black"
+                  ></path>
+                </svg>
+              </button>
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
               </div>
-            </article>
-          </div>
+              <span class="time-display">1:30 / 4:30</span>
+            </div>
+          </article>
 
-          <div class="performances-row">
-            <article class="performance-card">
-              <figure class="performance-media">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/02355b033134b42d7a2c16d42815d7d31bdedb9b2637cdff4764eef4a4e166d6?placeholderIfAbsent=true"
-                  alt="Song of the Bronze Bells"
-                  class="performance-thumbnail"
-                />
-              </figure>
-              <h2 class="performance-title">Song of the Bronze Bells</h2>
-              <p class="performance-metadata">
-                Era: Zhou Dynasty | Duration: 4:30
-              </p>
-              <div class="playback-controls">
-                <button class="play-button">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/0ac251c2112d61b3b2d4b61268108832d4f508f42c49c8ae93efe07e750af69f?placeholderIfAbsent=true"
-                    alt="Play"
-                    class="play-icon"
-                  />
-                </button>
-                <div class="progress-bar">
-                  <div class="progress-fill"></div>
-                </div>
-                <span class="time-display">1:30 / 4:30</span>
+          <article class="music-card">
+            <img
+              src="images/3.png"
+              alt="Jingle Bells"
+              class="music-image"
+            />
+            <h3 class="music-title">Jingle Bells</h3>
+            <p class="music-duration">Duration: 4:30</p>
+            <div class="player-controls">
+              <button class="play-button">
+                <svg
+                  width="12"
+                  height="16"
+                  viewBox="0 0 12 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0H12V16H0V0Z" stroke="#E5E7EB"></path>
+                  <path
+                    d="M2.28125 1.21872C1.81875 0.934346 1.2375 0.924971 0.765625 1.1906C0.29375 1.45622 0 1.95622 0 2.49997V13.5C0 14.0437 0.29375 14.5437 0.765625 14.8093C1.2375 15.075 1.81875 15.0625 2.28125 14.7812L11.2812 9.28122C11.7281 9.00935 12 8.52497 12 7.99997C12 7.47497 11.7281 6.99372 11.2812 6.71872L2.28125 1.21872Z"
+                    fill="black"
+                  ></path>
+                </svg>
+              </button>
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
               </div>
-            </article>
+              <span class="time-display">1:30 / 4:30</span>
+            </div>
+          </article>
 
-            <article class="performance-card">
-              <figure class="performance-media">
-                <img
-                  src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/02355b033134b42d7a2c16d42815d7d31bdedb9b2637cdff4764eef4a4e166d6?placeholderIfAbsent=true"
-                  alt="Song of the Bronze Bells"
-                  class="performance-thumbnail"
-                />
-              </figure>
-              <h2 class="performance-title">Song of the Bronze Bells</h2>
-              <p class="performance-metadata">
-                Era: Zhou Dynasty | Duration: 4:30
-              </p>
-              <div class="playback-controls">
-                <button class="play-button">
-                  <img
-                    src="https://cdn.builder.io/api/v1/image/assets/a09698a6fa564213a4d9333033d6e5c9/0ac251c2112d61b3b2d4b61268108832d4f508f42c49c8ae93efe07e750af69f?placeholderIfAbsent=true"
-                    alt="Play"
-                    class="play-icon"
-                  />
-                </button>
-                <div class="progress-bar">
-                  <div class="progress-fill"></div>
-                </div>
-                <span class="time-display">1:30 / 4:30</span>
+          <article class="music-card">
+            <img
+              src="images/4.png"
+              alt="Mo Li Hua"
+              class="music-image"
+            />
+            <h3 class="music-title">Mo Li Hua (Jasmine Flower)</h3>
+            <p class="music-duration">Duration: 4:30</p>
+            <div class="player-controls">
+              <button class="play-button">
+                <svg
+                  width="12"
+                  height="16"
+                  viewBox="0 0 12 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M0 0H12V16H0V0Z" stroke="#E5E7EB"></path>
+                  <path
+                    d="M2.28125 1.21872C1.81875 0.934346 1.2375 0.924971 0.765625 1.1906C0.29375 1.45622 0 1.95622 0 2.49997V13.5C0 14.0437 0.29375 14.5437 0.765625 14.8093C1.2375 15.075 1.81875 15.0625 2.28125 14.7812L11.2812 9.28122C11.7281 9.00935 12 8.52497 12 7.99997C12 7.47497 11.7281 6.99372 11.2812 6.71872L2.28125 1.21872Z"
+                    fill="black"
+                  ></path>
+                </svg>
+              </button>
+              <div class="progress-bar">
+                <div class="progress-fill"></div>
               </div>
-            </article>
-          </div>
+              <span class="time-display">1:30 / 4:30</span>
+            </div>
+          </article>
         </section>
       </main>
     </div>
   </body>
+
+  <script src="index.js"></script>
 </html>
