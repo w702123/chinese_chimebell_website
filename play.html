@@ -5,14 +5,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chime Bells Player</title>
-    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Main wrapper for all content -->
     <div class="wrapper">
       <header>
         <!-- Top navigation bar -->
         <!-- Logo and site name -->
         <div class="logo">
+          <!-- Play icon SVG for the player page -->
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
             <path fill-rule="evenodd" clip-rule="evenodd" d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM10.7828 7.99043L16.4265 11.1258C17.1123 11.5068 17.1123 12.4932 16.4265 12.8742L10.7828 16.0096C9.98293 16.4539 9 15.8756 9 14.9606V9.03942C9 8.12444 9.98293 7.54607 10.7828 7.99043Z" fill="#222222"/>
           </svg>
@@ -21,6 +23,7 @@
 
         <!-- Navigation menu -->
         <!-- Reference: https://www.w3schools.com/howto/howto_js_topnav_responsive.asp -->
+        <!-- Main navigation with responsive design -->
         <nav class="topnav" id="myTopnav">
           <ul>
             <li><a href="index.html">Home</a></li>
@@ -42,18 +45,21 @@
 
       <!-- Main content area -->
       <main class="main-content">
-        <!-- Tab switcher for player/tutorial -->
+        <!-- Tab navigation for switching between player and tutorial -->
         <div class="tab-navigation">
+          <!-- Virtual player tab button -->
           <button class="tab-button active">Virtual Player</button>
+          <!-- Tutorial tab button -->
           <button class="tab-button">Tutorial</button>
         </div>
 
         <!-- Virtual bells player section -->
 
         <section class="player-section">
-          <!-- Interactive bells display -->
+          <!-- Interactive bells display grid -->
           <div class="bells-container">
             <!-- Individual bell template - repeated for A1-A10 -->
+            <!-- Bell a1 - a10 -->
             <div class="bell-wrapper">
               <img
                 src="images/DP154556.jpg"
@@ -138,8 +144,9 @@
 
           <!-- Player controls at bottom -->
           <div class="player-controls">
-            <!-- Volume control -->
+            <!-- Volume control button -->
             <button class="volume-button">
+              <!-- Volume icon SVG -->
               <svg
                 width="20"
                 height="16"
@@ -170,9 +177,11 @@
           </div>
         </section>
 
-        <!-- Tutorial section with How to use instructions -->
+        <!-- Tutorial section with instructions -->
         <section class="tutorial-section">
+          <!-- Tutorial title -->
           <h2 class="tutorial-title">Tutorial</h2>
+          <!-- Step-by-step instructions -->
           <div class="tutorial-content">
             <p>1. Click on any bell image to play its sound (A1 - A10).</p>
             <p>2. Click multiple bells to create your own melody.</p>
@@ -190,5 +199,5 @@
       </main>
     </div>
   </body>
-  <script src="index.js"></script>
+  <script src="script.js"></script>
 </html>

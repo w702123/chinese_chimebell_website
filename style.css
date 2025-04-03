@@ -1,0 +1,1175 @@
+@font-face {
+  font-family: 'Hauora';
+  src: url(css/fonts/hauora-regular.woff) format('woff'),
+       url(css/fonts/Hauora-Regular.woff2) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Global styles - Applied to all pages */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Hauora', sans-serif;
+  background-color: #fafafa;
+}
+
+/* Main wrapper - Applied to all pages */
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  padding-bottom: 98px;
+}
+
+/* Header & Navigation - Applied to all pages */
+header {
+  height: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  border-bottom: 1px solid #E5E7EB;
+  background: #FFF;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logo h1 {
+  font-family: 'Hauora', sans-serif;
+  color: #000;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Navigation styles */
+nav.topnav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+nav.topnav ul {
+  display: flex;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+nav.topnav ul li {
+  width: 90px;
+}
+
+nav.topnav a {
+  display: block;
+  width: 100%;
+  padding: 8px 0;
+  text-align: center;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  color: #000;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+nav.topnav a:hover {
+  background-color: #ffd700;
+}
+
+nav.topnav a.active {
+  background-color: #fff1a7;
+  font-weight: 700;
+}
+
+/* Menu toggle styles */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.menu-toggle svg {
+  width: 24px;
+  height: 24px;
+  stroke: #000000;
+  stroke-width: 2;
+}
+
+/* ===== HOME PAGE STYLES ===== */
+/* Hero section - Home page */
+.hero {
+  width: 100%;
+  color: #fff;
+  background-color: #f5f5f5;
+  position: relative;
+}
+
+/*lects all <div> elements that are direct 
+children of an element with class hero.*/
+.hero > div {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  min-height: 654px;
+  width: 100%;
+  padding: 48px 80px 246px;
+  align-items: flex-start;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero h2 {
+  font-family: 'Hauora', sans-serif;
+  position: relative;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 67px;
+}
+
+.hero p {
+  position: relative;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 30px;
+  margin-top: 48px;
+}
+
+.buttons {
+  position: relative;
+  display: flex;
+  margin-top: 58px;
+  align-items: stretch;
+  gap: 16px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.btn {
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 50px;
+  padding: 22px 31px;
+}
+
+.primary {
+  background-color: #ffd700;
+  color: #000;
+}
+
+.secondary {
+  background-color: #fff1a7;
+  color: #000;
+  padding: 24px 66px;
+}
+
+.decoration {
+  position: relative;
+  align-self: center;
+  display: flex;
+  margin-top: 4px;
+  margin-bottom: -49px;
+  width: 175px;
+  flex-shrink: 0;
+  height: 28px;
+}
+
+/* Search section - Home page */
+.search {
+  display: flex;
+  margin-top: 40px;
+  width: 100%;
+  padding: 48px 70px;
+  flex-direction: column;
+  align-items: center;
+  font-size: 16px;
+  color: #a1a0a0;
+  justify-content: center;
+}
+
+.search form {
+  border-radius: 50px;
+  background-color: #fff;
+  border: 2px solid #1c1b1c;
+  display: flex;
+  width: 609px;
+  max-width: 100%;
+  padding: 18px 15px;
+  align-items: center;
+  gap: 9px;
+}
+
+.search input {
+  flex: 1;
+  font-size: 16px;
+  color: #a1a0a0;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+
+/* Features section - Home page */
+.features {
+  display: flex;
+  width: 100%;
+  padding: 48px 80px;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.features article {
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1), 0px 10px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex: 1;
+  min-width: 300px;
+  padding: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.icon, .learn, .play, .library {
+  width: 24px;
+  height: 24px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.features h3 {
+  color: #000;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.features p {
+  color: #525252;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  display: flex;
+  flex-direction: column;
+}
+
+.features a {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: auto;
+}
+
+/* ===== HISTORY/LEARN PAGE STYLES ===== */
+/* Content section - History/Learn page */
+.learn-page {
+  font-family: 'Hauora', sans-serif;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Navigation styles for chapter links */
+.figcaption {
+  margin-top: 2rem;
+  font-family: 'Hauora', sans-serif;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.figcaption a {
+  text-decoration: none;
+  color: #525252;
+  transition: all 0.3s ease;
+  display: inline-block;
+  border-radius: 8px;
+}
+
+.figcaption a:hover {
+  color: #000;
+  background-color: #fff1a7;
+}
+
+/* Chapter Cards Styling */
+.chapter-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 2rem 0;
+  padding: 2rem;
+  transition: all 0.3s ease;
+}
+
+.chapter-card .sticky h2 {
+  padding: 0;
+  font-family: 'Hauora', sans-serif;
+}
+
+.chapter-card img {
+  border-radius: 4px;
+  margin: 1rem 0;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.chapter-content {
+  margin: 2rem 0 0;
+}
+
+.chapter-content h3 {
+  color: #333;
+  font-family: 'Hauora', sans-serif;
+  font-size: 1.5rem;
+  margin: 1.5rem 0 1rem;
+}
+
+.chapter-content p, 
+.chapter-content li {
+  color: #444;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+  font-family: 'Hauora', sans-serif;
+}
+
+.chapter-content ul {
+  margin: 1rem 0;
+  padding-left: 2rem;
+  color: #444;
+}
+
+.chapter-content li {
+  margin-bottom: 0.5rem;
+}
+
+.source {
+  color: #666;
+  font-size: 0.9rem;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+  margin-top: 2rem;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.source a {
+  word-break: break-all;
+}
+
+/* Back to top button */
+.back-to-top {
+  position: fixed;
+  bottom: 2rem;
+  left: calc(55% + 720px - 5rem); /* Half of learn-page max-width (1440px/2) + button offset */
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #fff1a7;
+  color: #000;
+  border: none;
+  font-size: 1.25rem;
+  cursor: pointer;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.back-to-top:hover {
+  background-color: #ffd700; 
+  transform: translateY(-3px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* ===== PLAY PAGE STYLES ===== */
+/* Main content - Play page */
+.main-content {
+  padding: 30px 0;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Tab navigation - Play page */
+.tab-navigation {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 31px;
+  padding: 20 20px;
+}
+
+.tab-button {
+  box-sizing: border-box;
+  display: flex;
+  width: 170.141px;
+  padding: 15px 56.141px 16px 56px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  /*font-family: "Inter", sans-serif;*/
+  background-color: #fff1a7;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tab-button.active {
+  background-color: #ffd700;
+}
+
+/* Player section - Play page */
+.player-section {
+  position: relative;
+  border-radius: 12px;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 10px 15px rgba(0, 0, 0, 0.1);
+  padding: 109px 242px 253px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+/* Bells container - Desktop layout */
+.bells-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* Default 2x5 layout */
+  column-gap: 24px;
+  row-gap: 48px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Individual bell styling */
+.bell-wrapper {
+  position: relative;
+  width: 132px;
+  height: 132px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+}
+
+.bell-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center -42px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.bell-image:hover {
+  transform: scale(1.05);
+}
+
+.bell-note {
+  position: absolute;
+  color: #ffd700;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* Controls container */
+.player-controls {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+}
+
+/* Volume control */
+.volume-button {
+  width: 46px;
+  height: 42px;
+  border: 1px solid #e5e7eb;
+  border-radius: 9999px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+/* Action buttons container */
+.action-buttons {
+  display: flex;
+  gap: 24px;
+}
+
+.action-button {
+  padding: 11px 24px;
+  border: 1px solid #e5e7eb;
+  border-radius: 50px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: transparent;
+  /*font-family: "Inter", sans-serif;*/
+}
+
+/* Tutorial section - Play page */
+.tutorial-section {
+  border-radius: 12px;
+  padding: 52px 57px;
+  box-shadow:
+    0 4px 6px rgba(0, 0, 0, 0.1),
+    0 10px 15px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  margin: 60px auto 0;
+  max-width: 1440px;
+}
+
+.tutorial-title {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+  margin-bottom: 48px;
+}
+
+.tutorial-content {
+  color: #525252;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.tutorial-content p {
+  margin-bottom: 24px;
+}
+
+.tutorial-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* ===== LIBRARY PAGE STYLES ===== */
+/* Base styles for library page containers */
+.search-container,
+.music-grid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+/* Search section - Library page */
+.search-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff;
+  border-radius: 50px;
+  box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+  min-width: 0;
+  flex-wrap: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #1C1B1C;
+  padding: 8px 16px;
+}
+
+.search-input-wrapper {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  background-color: #fff;
+  border-radius: 50px;
+  min-width: 0;
+}
+
+.search-input-wrapper input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 16px;
+  color: #525252;
+  background: transparent;
+}
+
+/* Search buttons styles */
+.search-button {
+  padding: 11px 24px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-button {
+  background-color: #171717;
+  color: #fff;
+  border: none;
+}
+
+/* 
+ * Music Card styles
+ * Design inspired by:
+ * - Spotify's card layout: https://open.spotify.com
+ * - SoundCloud's player interface: https://soundcloud.com
+ */
+.music-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.music-image {
+  width: 100%;
+  height: 315px;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.music-title {
+  margin-top: 18px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000;
+}
+
+.music-duration {
+  margin-top: 11px;
+  font-size: 14px;
+  color: #525252;
+}
+
+/* Library page */
+/* Upload section styles */
+.upload-section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.upload-container {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 32px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.upload-container h2 {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: #000;
+}
+
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 
+ * File upload components
+ * Reference: Dropzone.js: https://www.dropzone.dev/
+ */
+.file-input-container {
+  position: relative;
+}
+
+.file-input-container input[type="file"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.file-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px;
+  border: 2px dashed #E5E7EB;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: #fafafa;
+}
+
+.file-label.has-file {
+  border-style: solid;
+  border-color: #ffd700;
+  background-color: #fff1a7;
+}
+
+.file-label:hover {
+  border-color: #ffd700;
+  background-color: #fff1a7;
+}
+
+.file-label svg {
+  width: 24px;
+  height: 24px;
+}
+
+.input-group {
+  display: flex;
+  gap: 16px;
+}
+
+.input-group input[type="text"] {
+  flex: 1;
+  padding: 12px 16px;
+  border: 1px solid #E5E7EB;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.upload-button {
+  padding: 12px 24px;
+  background-color: #fff1a7;
+  color: #000;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-button:hover {
+  background-color: #ffd700;
+}
+
+/* Music Collection styles */
+.music-collection {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.music-collection h2 {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: #000;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px;
+  background-color: #fff;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.empty-state svg {
+  color: #9CA3AF;
+  margin-bottom: 16px;
+}
+
+.empty-state p {
+  color: #6B7280;
+  margin: 8px 0;
+}
+
+.empty-state p:first-of-type {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Music Grid styles */
+ /* Responsive Grid Layout
+ * Based on Bootstrap's grid system: https://getbootstrap.com/docs/5.0/layout/grid/
+ */
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+  margin-top: 24px;
+}
+
+.music-card:hover {
+  transform: translateY(-4px);
+}
+
+.music-info {
+  padding: 16px;
+}
+
+.music-title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.music-duration {
+  color: #6B7280;
+  font-size: 14px;
+}
+
+/* 
+ * Audio Player Controls
+ * Inspired by:
+ * - HTML5 Audio Player: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+ * - Howler.js player styling: https://howlerjs.com/
+ */
+.player-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border-top: 1px solid #E5E7EB;
+}
+
+.play-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background-color: #fff1a7;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.play-button:hover {
+  background-color: #ffd700;
+}
+
+.progress-bar {
+  flex: 1;
+  height: 4px;
+  background-color: #E5E7EB;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: #ffd700;
+  width: 0%;
+  transition: width 0.1s linear;
+}
+
+.time-display {
+  font-size: 14px;
+  color: #6B7280;
+  min-width: 100px;
+  text-align: right;
+}
+
+.delete-button {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 2;
+  color: white;
+}
+
+.delete-button:hover {
+  background: rgba(220, 38, 38, 0.8);
+  transform: scale(1.1);
+}
+
+.music-card:hover .delete-button {
+  opacity: 1;
+}
+
+/* =================================
+   RESPONSIVE STYLES 
+================================= */
+
+/* =================================
+   1. GLOBAL RESPONSIVE STYLES
+   - Applies to all pages
+   - Basic layout and navigation adjustments
+================================= */
+@media screen and (max-width: 768px) {
+  /* Header adjustments for mobile */
+  header {
+    padding: 0 20px;
+  }
+
+  /* Mobile menu toggle button */
+  .menu-toggle {
+    display: block;
+    margin-left: auto;
+    z-index: 101;
+  }
+
+  /* Mobile navigation menu */
+  nav.topnav ul {
+    display: none;
+    position: absolute;
+    width: 108px;
+    right: 0;
+    top: 100%;
+    padding: 8px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    z-index: 100;
+  }
+
+  /* Responsive navigation styles when menu is open */
+  nav.topnav.responsive ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  nav.topnav.responsive a {
+    text-align: left;
+    padding: 10px 14px;
+  }
+}
+
+/* =================================
+   2. LEARN PAGE RESPONSIVE STYLES
+   - Chapter cards layout
+   - Content readability
+   - Navigation elements
+================================= */
+@media screen and (max-width: 1200px) {
+  /* Large screen chapter card adjustments */
+  .chapter-card {
+    margin: 2rem 100px 2rem 150px;
+  }
+  
+  /* Ensure content fits within viewport */
+  .chapter-content, 
+  .chapter-card .sticky h2,
+  .chapter-card img,
+  .source {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  /* Medium screen margin adjustments */
+  .chapter-card {
+    margin: 2rem 50px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Mobile chapter card layout */
+  .chapter-card {
+    margin: 1rem 20px;
+    padding: 1.5rem;
+  }
+
+  /* Typography adjustments for readability */
+  .chapter-content h3 {
+    font-size: 1.3rem;
+  }
+  
+  .chapter-content p {
+    font-size: 1rem;
+  }
+
+  /* Source citation adjustments */
+  .source {
+    font-size: 0.85rem;
+    padding: 1rem 0;
+  }
+
+  /* Navigation elements positioning */
+  .figcaption {
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  /* Back to top button mobile styling */
+  .back-to-top {
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  /* Small mobile device adjustments */
+  .chapter-card {
+    margin: 1rem 15px;
+    padding: 1rem;
+  }
+}
+
+
+/* =================================
+   3. PLAY PAGE RESPONSIVE STYLES
+   - Bell layout adjustments
+   - Player controls
+   - Interactive elements
+================================= */
+@media screen and (max-width: 992px) {
+  /* Medium screen player adjustments */
+  .player-section {
+    padding: 80px 100px;
+  }
+
+  /* Bell size adjustments */
+  .bell-wrapper {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Bell image positioning */
+  .bell-image {
+    object-position: center -38px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Mobile player section layout */
+  .player-section {
+    padding: 40px 20px;
+  }
+
+  /* Mobile bells grid layout */
+  .bells-container {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(80px, 1fr));
+    column-gap: 8px;
+    row-gap: 16px;
+    max-width: 300px;
+  }
+
+  /* Mobile bell size and positioning */
+  .bell-wrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .bell-image {
+    object-position: center -24px;
+  }
+
+  /* Hide last bell on mobile */
+  .bell-wrapper:nth-child(10) {
+    display: none;
+  }
+
+  /* Mobile note text size */
+  .bell-note {
+    font-size: 16px;
+  }
+
+  /* Mobile player controls layout */
+  .player-controls {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  /* Mobile action buttons */
+  .action-buttons {
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Hide share button on mobile */
+  .action-button:last-child {
+    display: none;
+  }
+}
+
+.file-name {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #525252;
+  word-break: break-all;
+}
+
+.image-preview {
+  margin-top: 12px;
+  width: 100%;
+  max-height: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  display: none;
+}
+
+.image-preview img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =================================
+   4. LIBRARY PAGE RESPONSIVE STYLES
+   - Music grid layout
+   - Upload section
+   - Collection display
+================================= */
+@media screen and (max-width: 768px) {
+  /* Section padding adjustments */
+  .upload-section,
+  .music-collection {
+    padding: 20px;
+  }
+
+  /* Form input group mobile layout */
+  .input-group {
+    flex-direction: column;
+  }
+
+  /* Single column grid for music cards */
+  .music-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
