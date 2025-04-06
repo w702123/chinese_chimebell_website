@@ -10,38 +10,212 @@ function toggleMobileMenu() {
 }
 
 // Add event listener when DOM content is loaded
+// Reference: https://www.w3schools.com/js/js_htmldom_eventlistener.asp
 document.addEventListener('DOMContentLoaded', function() {
   const menuButton = document.getElementById('menuToggle');
   menuButton.addEventListener('click', toggleMobileMenu);
+
+  // Initialize search functionality
+  initializeSearch();
+
+  // Initialize tab navigation
+  // Tab Navigation
+  // Reference: https://www.w3schools.com/howto/howto_js_tabs.asp
+  const tabButtons = document.querySelectorAll('.tab-button');
+  const playerSection = document.querySelector('.player-section');
+  const tutorialSection = document.querySelector('.tutorial-section');
+
+  tabButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      // Remove active class from all buttons
+      tabButtons.forEach(btn => btn.classList.remove('active'));
+      // Add active class to clicked button
+      this.classList.add('active');
+
+      // Scroll to corresponding section
+      // Reference: https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
+      const targetSection = this.textContent.trim() === 'Virtual Player' ? playerSection : tutorialSection;
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Share button functionality
+  // Reference: https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+  const shareButton = document.querySelector('.action-button:last-child');
+  if (shareButton) {
+    shareButton.addEventListener('click', async function() {
+      const url = 'https://w702123.github.io/chinese_chimebell_website/';
+      try {
+        await navigator.clipboard.writeText(url);
+        // Change button text temporarily to show feedback
+        const originalText = this.textContent;
+        this.textContent = 'Copied!';
+        setTimeout(() => {
+          this.textContent = originalText;
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy URL:', err);
+      }
+    });
+  }
+
+  // Initialize bells functionality only if we're on the play page
+  if (document.querySelector('.bells-container')) {
+    initializeBells();
+  }
 });
 
-// ----------------
+//---------------- Home page Search funtionality: ----------------
+// Index.html Search funtionality:
+
+
+// Initialize search functionality
+initializeSearch();
+
+//---------------- Home page Search functionality: ----------------
+// References:
+// - Search implementation: https://www.w3schools.com/howto/howto_js_filter_dropdown.asp
+// - Search suggestions: https://www.w3schools.com/howto/howto_js_filter_list.asp
+// - Dynamic content: https://www.w3schools.com/howto/howto_js_filter_elements.asp
+// - Search box: https://www.w3schools.com/howto/howto_css_searchbox.asp
+
+function initializeSearch() {
+  const searchForm = document.querySelector('.search form');
+  const searchInput = document.getElementById('searchInput');
+  const searchResults = document.getElementById('searchResults');
+
+  // Define searchable content
+  const pageContent = {
+    'learn.html': {
+      title: 'Learn',
+      content: [
+        'History of Chinese Chime Bells',
+        'Musical techniques and methods',
+        'Traditional compositions',
+        'Cultural significance',
+        'Ancient musical instruments',
+        'Historical importance'
+      ]
+    },
+    'play.html': {
+      title: 'Play',
+      content: [
+        'Interactive chime bells',
+        'Virtual instrument',
+        'Musical practice',
+        'Sound exploration',
+        'Digital performance',
+        'Traditional melodies'
+      ]
+    },
+    'library.html': {
+      title: 'Library',
+      content: [
+        'Music collection',
+        'Audio recordings',
+        'Traditional pieces',
+        'Historical performances',
+        'Sound archives',
+        'Musical compositions'
+      ]
+    }
+  };
+
+  if (searchForm) {
+    searchForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const query = searchInput.value.toLowerCase().trim();
+      
+      if (!query) {
+        searchResults.innerHTML = '';
+        return;
+      }
+
+      let results = [];
+      // Search through content
+      for (const [page, data] of Object.entries(pageContent)) {
+        const matches = data.content.filter(item => 
+          item.toLowerCase().includes(query)
+        );
+        
+        if (matches.length > 0) {
+          results.push({
+            page: page,
+            title: data.title,
+            matches: matches
+          });
+        }
+      }
+
+      displaySearchResults(results, query);
+    });
+  }
+
+  // Display search results with animation
+  // Reference: https://codepen.io/san_coder13/pen/VwYLjJB
+  
+  function displaySearchResults(results, query) {
+    if (results.length === 0) {
+      searchResults.innerHTML = `
+        <div class="no-results">
+          <p>No results found for "${query}"</p>
+        </div>
+      `;
+      return;
+    }
+
+    const resultsHTML = results.map(result => `
+      <div class="result-item">
+        <h3><a href="${result.page}">${result.title}</a></h3>
+        <ul>
+          ${result.matches.map(match => `<li>${match}</li>`).join('')}
+        </ul>
+      </div>
+    `).join('');
+
+    searchResults.innerHTML = `
+      <div class="results-header">
+        <h2>Search Results</h2>
+        <p>${results.length} page(s) found</p>
+      </div>
+      ${resultsHTML}
+    `;
+  }
+}
 
 //------ learn page---------------
+// References: 
+// - Back to top button: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
+// - Smooth scrolling: https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
+// https://codepen.io/matthewcain/pen/ZepbeR
 // Back to top button functionality
 document.addEventListener('DOMContentLoaded', function() {
   const backToTopButton = document.getElementById('backToTop');
   
-  // Show/hide button based on scroll position
-  window.addEventListener('scroll', function() {
+  if (backToTopButton) {
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
       if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-          backToTopButton.style.display = "flex";
+        backToTopButton.style.display = "flex";
       } else {
-          backToTopButton.style.display = "none";
+        backToTopButton.style.display = "none";
       }
-  });
-  
-  // Scroll to top when button is clicked
-  backToTopButton.addEventListener('click', function() {
+    });
+    
+    // Scroll to top when button is clicked
+    backToTopButton.addEventListener('click', function() {
       window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
+        top: 0,
+        behavior: 'smooth'
       });
-  });
+    });
+  }
 });
 
 
-//------ learn page---------------
+//------ library page---------------
 
 /*
  * Library page functionality
@@ -74,6 +248,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const imagePreview = document.getElementById('imagePreview');
 
   // Handle music file selection
+   //	When you pick a music file, it shows the file name.
+
   if (musicFileInput) {
     musicFileInput.addEventListener('change', function(e) {
       const file = e.target.files[0];
@@ -87,10 +263,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
   // Handle cover image selection
-  /* 
-   * Image preview implementation using FileReader API
-   * Reference: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
-   */
+   // Image preview implementation using FileReader API
+   // Reference: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
+  //	When you pick a cover image, it shows a preview image using FileReader.
   if (coverImageInput) {
     coverImageInput.addEventListener('change', function(e) {
       const file = e.target.files[0];
@@ -163,7 +338,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Create object URL for the music file
     const musicUrl = URL.createObjectURL(musicFile);
-    const coverUrl = coverFile ? URL.createObjectURL(coverFile) : 'default-cover.jpg';
+    
+    // Convert cover image to Base64 if exists
+    let coverUrl = 'default-cover.jpg';
+    if (coverFile) {
+      coverUrl = await new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.readAsDataURL(coverFile);
+      });
+    }
     
     // Create audio element to get duration
     const audio = new Audio(musicUrl);
@@ -195,6 +379,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Reset form
     e.target.reset();
+    imagePreview.innerHTML = '';
+    imagePreview.style.display = 'none';
     
     // Hide empty state if visible
     document.getElementById('emptyState').style.display = 'none';
@@ -229,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <path d="M8 5v14l11-7z" fill="currentColor"/>
           </svg>
         </button>
-        <div class="progress-bar">
+        <div class="progress-bar" style="cursor: pointer;">
           <div class="progress-fill"></div>
         </div>
         <span class="time-display">0:00 / ${formatTime(music.duration)}</span>
@@ -262,6 +448,31 @@ function formatDuration(seconds) {
 let currentAudio = null;
 let currentButton = null;
 
+// Function to update progress bar and time display
+function updateProgress(controls, audio) {
+  const progressBar = controls.querySelector('.progress-bar');
+  const progressFill = controls.querySelector('.progress-fill');
+  const timeDisplay = controls.querySelector('.time-display');
+  
+  const progress = (audio.currentTime / audio.duration) * 100;
+  progressFill.style.width = `${progress}%`;
+  
+  timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
+}
+
+// Add click handler for progress bar
+function setupProgressBarControl(controls, audio) {
+  const progressBar = controls.querySelector('.progress-bar');
+  
+  progressBar.addEventListener('click', function(e) {
+    const rect = progressBar.getBoundingClientRect();
+    const clickPosition = (e.clientX - rect.left) / rect.width;
+    const newTime = clickPosition * audio.duration;
+    audio.currentTime = newTime;
+    updateProgress(controls, audio);
+  });
+}
+
 // Toggle play/pause
 function togglePlay(button, musicUrl) {
   if (currentAudio && currentAudio.src === musicUrl) {
@@ -280,6 +491,9 @@ function togglePlay(button, musicUrl) {
     
     currentAudio = new Audio(musicUrl);
     currentButton = button;
+    
+    // Setup progress bar control
+    setupProgressBarControl(button.parentElement, currentAudio);
     
     currentAudio.addEventListener('timeupdate', () => {
       updateProgress(button.parentElement, currentAudio);
@@ -302,32 +516,22 @@ function updatePlayButton(button, isPlaying) {
     : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>';
 }
 
-// Function to format time in MM:SS
+// Format time in MM:SS
+// Reference: https://www.w3schools.com/js/js_date_formats.asp
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
   return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
-// Function to update progress bar and time display
-function updateProgress(controls, audio) {
-  const progressBar = controls.querySelector('.progress-fill');
-  const timeDisplay = controls.querySelector('.time-display');
-  
-  const progress = (audio.currentTime / audio.duration) * 100;
-  progressBar.style.width = `${progress}%`;
-  
-  timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
-}
-
-
-
-
+// Delete music with confirmation
+// Reference: https://www.w3schools.com/js/js_popup.asp
 // Reference: https://codepen.io/szymongabrek/pen/QMmeyQ
-// Function to delete music
+
 function deleteMusic(id) {
   if (confirm('Are you sure you want to delete this music?')) {
     // Remove from localStorage
+    // Reference: https://www.w3schools.com/js/js_api_web_storage.asp
     const musicCollection = JSON.parse(localStorage.getItem('musicCollection') || '[]');
     const updatedCollection = musicCollection.filter(music => music.id !== parseInt(id));
     localStorage.setItem('musicCollection', JSON.stringify(updatedCollection));
@@ -342,5 +546,121 @@ function deleteMusic(id) {
     if (updatedCollection.length === 0) {
       document.getElementById('emptyState').style.display = 'flex';
     }
+  }
+}
+
+//---------------- Play page functionality: ----------------
+
+function initializeBells() {
+  const bells = document.querySelectorAll('.bell-wrapper');
+  const volumeButton = document.querySelector('.volume-button');
+  let isMuted = false;
+  let currentVolume = 1.0; // Default volume level
+
+  // Create volume slider with custom styling
+  // Reference: 
+  // https://blog.codepen.io/2017/06/09/best-volume-sliders/
+  // https://codepen.io/valyanggy/pen/qBPdBjZ
+  // https://codepen.io/emilcarlsson/pen/PPNLPy
+  const volumeSlider = document.createElement('input');
+  volumeSlider.type = 'range';
+  volumeSlider.min = '0';
+  volumeSlider.max = '1';
+  volumeSlider.step = '0.1';
+  volumeSlider.value = currentVolume;
+  volumeSlider.className = 'volume-slider';
+  
+  // Create a container for volume controls
+  const volumeControls = document.createElement('div');
+  volumeControls.className = 'volume-controls';
+  volumeControls.style.display = 'flex';
+  volumeControls.style.alignItems = 'center';
+  
+  // Move the volume button into the container
+  volumeButton.parentNode.insertBefore(volumeControls, volumeButton);
+  volumeControls.appendChild(volumeButton);
+  volumeControls.appendChild(volumeSlider);
+  
+  // Hide slider by default
+  volumeSlider.style.display = 'none';
+
+  // Add click handlers to all bells
+  bells.forEach(bell => {
+    bell.addEventListener('click', function() {
+      playBellSound(this);
+    });
+  });
+
+  // Play bell sound with visual feedback
+  // References:
+  // - Audio API: https://www.w3schools.com/tags/ref_av_dom.asp
+  // - CSS Animation: https://www.w3schools.com/css/css3_animations.asp
+  function playBellSound(bell) {
+    const audio = bell.querySelector('audio');
+    if (audio) {
+      // Reset all other bells
+      bells.forEach(otherBell => {
+        const otherAudio = otherBell.querySelector('audio');
+        if (otherAudio && otherAudio !== audio) {
+          otherAudio.pause();
+          otherAudio.currentTime = 0;
+        }
+        otherBell.classList.remove('playing');
+      });
+
+      // Set volume and play
+      audio.volume = isMuted ? 0 : currentVolume;
+      audio.currentTime = 0;
+      audio.play();
+
+      // Add visual feedback
+      bell.classList.add('playing');
+      setTimeout(() => {
+        bell.classList.remove('playing');
+      }, 500);
+    }
+  }
+
+  // Volume control with click outside handling
+  
+  if (volumeButton) {
+    // Toggle volume slider visibility when clicking the volume button
+    volumeButton.addEventListener('click', function(e) {
+      e.stopPropagation(); // Prevent document click from immediately hiding slider
+      volumeSlider.style.display = volumeSlider.style.display === 'none' ? 'block' : 'none';
+    });
+
+    // Hide volume slider when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!volumeButton.contains(e.target) && !volumeSlider.contains(e.target)) {
+        volumeSlider.style.display = 'none';
+      }
+    });
+
+    // Update volume when slider changes
+    volumeSlider.addEventListener('input', function() {
+      currentVolume = parseFloat(this.value);
+      isMuted = currentVolume === 0;
+      
+      // Update volume button appearance
+      const volumePath = volumeButton.querySelector('path');
+      if (volumePath) {
+        if (currentVolume === 0) {
+          volumePath.style.fill = '#999';
+          volumeButton.classList.add('muted');
+        } else {
+          volumePath.style.fill = '#000';
+          volumeButton.classList.remove('muted');
+        }
+      }
+
+      // Update volume for all audio elements
+      bells.forEach(bell => {
+        const audio = bell.querySelector('audio');
+        if (audio) {
+          audio.volume = currentVolume;
+        }
+      });
+    });
   }
 }

@@ -54,91 +54,109 @@
         </div>
 
         <!-- Virtual bells player section -->
-
         <section class="player-section">
           <!-- Interactive bells display grid -->
           <div class="bells-container">
-            <!-- Individual bell template - repeated for A1-A10 -->
-            <!-- Bell a1 - a10 -->
-            <div class="bell-wrapper">
+            <!-- Individual bell template - repeated for musical notes -->
+            <!-- Bell 1 - a1 -->
+            <div class="bell-wrapper" data-note="a1">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A1"
+                alt="Bell a1"
                 class="bell-image"
               />
-              <span class="bell-note">A1</span>
+              <span class="bell-note">a1</span>
+              <audio src="sound/0 - 0024 - 音频 - a1.wav" preload="auto"></audio>
             </div>
-            <div class="bell-wrapper">
+            <!-- Bell 2 - b1 -->
+            <div class="bell-wrapper" data-note="b1">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A2"
+                alt="Bell b1"
                 class="bell-image"
               />
-              <span class="bell-note">A2</span>
+              <span class="bell-note">b1</span>
+              <audio src="sound/0 - 0022 - 音频 - b1.wav" preload="auto"></audio>
             </div>
-            <div class="bell-wrapper">
+            <!-- Bell 3 - c1 -->
+            <div class="bell-wrapper" data-note="c1">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A3"
+                alt="Bell c1"
                 class="bell-image"
               />
-              <span class="bell-note">A3</span>
+              <span class="bell-note">c1</span>
+              <audio src="sound/0 - 0032 - 音频 - c1.wav" preload="auto"></audio>
             </div>
-            <div class="bell-wrapper">
+            <!-- Bell 4 - d1 -->
+            <div class="bell-wrapper" data-note="d1">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A4"
+                alt="Bell d1"
                 class="bell-image"
               />
-              <span class="bell-note">A4</span>
+              <span class="bell-note">d1</span>
+              <audio src="sound/0 - 0031 - 音频 - d1.wav" preload="auto"></audio>
             </div>
-            <div class="bell-wrapper">
+            <!-- Bell 5 - e1 -->
+            <div class="bell-wrapper" data-note="e1">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A5"
+                alt="Bell e1"
                 class="bell-image"
               />
-              <span class="bell-note">A5</span>
+              <span class="bell-note">e1</span>
+              <audio src="sound/0 - 0029 - 音频 - e1.wav" preload="auto"></audio>
             </div>
-            <div class="bell-wrapper">
+            <!-- Bell 6 - f1 -->
+            <div class="bell-wrapper" data-note="f1">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A6"
+                alt="Bell f1"
                 class="bell-image"
               />
-              <span class="bell-note">A6</span>
+              <span class="bell-note">f1</span>
+              <audio src="sound/0 - 0028 - 音频 - f1.wav" preload="auto"></audio>
             </div>
-            <div class="bell-wrapper">
+            <!-- Bell 7 - g1 -->
+            <div class="bell-wrapper" data-note="g1">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A7"
+                alt="Bell g1"
                 class="bell-image"
               />
-              <span class="bell-note">A7</span>
+              <span class="bell-note">g1</span>
+              <audio src="sound/0 - 0027 - 音频 - g1.wav" preload="auto"></audio>
             </div>
-            <div class="bell-wrapper">
+            <!-- Bell 8 - A -->
+            <div class="bell-wrapper" data-note="A">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A8"
+                alt="Bell A"
                 class="bell-image"
               />
-              <span class="bell-note">A8</span>
+              <span class="bell-note">A</span>
+              <audio src="sound/1 - 0114 - 音频 - A.wav" preload="auto"></audio>
             </div>
-            <div class="bell-wrapper">
+            <!-- Bell 9 - B -->
+            <div class="bell-wrapper" data-note="B">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A9"
+                alt="Bell B"
                 class="bell-image"
               />
-              <span class="bell-note">A9</span>
+              <span class="bell-note">B</span>
+              <audio src="sound/1 - 0125 - 音频 - B.wav" preload="auto"></audio>
             </div>
-            <div class="bell-wrapper">
+            <!-- Bell 10 - C -->
+            <div class="bell-wrapper" data-note="C">
               <img
                 src="images/DP154556.jpg"
-                alt="Bell A10"
+                alt="Bell C"
                 class="bell-image"
               />
-              <span class="bell-note">A10</span>
+              <span class="bell-note">C</span>
+              <audio src="sound/1 - 0124 - 音频 - C.wav" preload="auto"></audio>
             </div>
           </div>
 
@@ -183,7 +201,7 @@
           <h2 class="tutorial-title">Tutorial</h2>
           <!-- Step-by-step instructions -->
           <div class="tutorial-content">
-            <p>1. Click on any bell image to play its sound (A1 - A10).</p>
+            <p>1. Click on any bell image to play its sound (a1, b1, c1, d1, e1, f1, g1, A, B, C).</p>
             <p>2. Click multiple bells to create your own melody.</p>
             <p>
               3. Adjust the volume using the slider in the bottom-left corner.
@@ -197,7 +215,13 @@
           </div>
         </section>
       </main>
+
+      <!-- Footer -->
+      <footer class="footer">
+        <a href="about.html">About Chinese Chime Bells</a>
+      </footer>
     </div>
+    
+    <script src="script.js"></script>
   </body>
-  <script src="script.js"></script>
 </html>

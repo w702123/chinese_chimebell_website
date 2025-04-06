@@ -25,7 +25,6 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  padding-bottom: 98px;
 }
 
 /* Header & Navigation - Applied to all pages */
@@ -109,6 +108,31 @@ nav.topnav a.active {
   stroke-width: 2;
 }
 
+/* Footer styles */
+.footer {
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  background-color: #fff;
+  border-top: 1px solid #E5E7EB;
+  margin-top: auto;
+}
+
+.footer a {
+  color: #525252;
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.footer a:hover {
+  color: #000;
+  background-color: #fff1a7;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+
 /* ===== HOME PAGE STYLES ===== */
 /* Hero section - Home page */
 .hero {
@@ -118,7 +142,7 @@ nav.topnav a.active {
   position: relative;
 }
 
-/*lects all <div> elements that are direct 
+/*lets all <div> elements that are direct 
 children of an element with class hero.*/
 .hero > div {
   display: flex;
@@ -174,14 +198,27 @@ children of an element with class hero.*/
 }
 
 .primary {
-  background-color: #ffd700;
+  background-color: #fff1a7;
   color: #000;
+  border: 1px solid #E5E7EB;
+}
+
+.primary:hover,
+.primary.active {
+  background-color: #ffd700;
 }
 
 .secondary {
-  background-color: #fff1a7;
+  background-color: #E5E5E5;
   color: #000;
+  border: 1px solid #E5E7EB;
   padding: 24px 66px;
+}
+
+.secondary:hover {
+  background-color: #1C1B1C;
+  color: #fff;
+  border: 2px solid #FFD700;
 }
 
 .decoration {
@@ -206,6 +243,7 @@ children of an element with class hero.*/
   font-size: 16px;
   color: #a1a0a0;
   justify-content: center;
+  position: relative;
 }
 
 .search form {
@@ -213,7 +251,7 @@ children of an element with class hero.*/
   background-color: #fff;
   border: 2px solid #1c1b1c;
   display: flex;
-  width: 609px;
+  width: 800px;
   max-width: 100%;
   padding: 18px 15px;
   align-items: center;
@@ -229,11 +267,99 @@ children of an element with class hero.*/
   outline: none;
 }
 
+.search-button {
+  padding: 11px 24px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  white-space: nowrap;
+  background-color: #E5E5E5;
+  border: 1px solid #E5E7EB;
+  color: #000;
+}
+
+.search-button:hover {
+  background-color: #1C1B1C;
+  color: #fff;
+  border: 2px solid #FFD700;
+}
+
+/* Search Results Styles */
+.search-results {
+  position: static;
+  width: 800px;
+  max-width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.results-header {
+  padding: 16px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.results-header h2 {
+  margin: 0;
+  font-size: 18px;
+  color: #1F2937;
+}
+
+.results-header p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  color: #6B7280;
+}
+
+.result-item {
+  padding: 16px;
+  border-bottom: 1px solid #E5E7EB;
+}
+
+.result-item:last-child {
+  border-bottom: none;
+}
+
+.result-item h3 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.result-item h3 a {
+  color: #1F2937;
+  text-decoration: none;
+}
+
+.result-item h3 a:hover {
+  color: #4B5563;
+  text-decoration: underline;
+}
+
+.result-item ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  list-style-type: disc;
+  color: #6B7280;
+}
+
+.result-item li {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.no-results {
+  padding: 24px;
+  text-align: center;
+  color: #6B7280;
+}
+
 /* Features section - Home page */
 .features {
   display: flex;
   width: 100%;
-  padding: 48px 80px;
+  padding: 24px 80px;
   flex-direction: row;
   justify-content: center;
   flex-wrap: wrap;
@@ -384,7 +510,7 @@ children of an element with class hero.*/
 .back-to-top {
   position: fixed;
   bottom: 2rem;
-  left: calc(55% + 720px - 5rem); /* Half of learn-page max-width (1440px/2) + button offset */
+  right: calc(50% - 600px); /* Position relative to the center of page, aligned with content max-width */
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
@@ -433,16 +559,27 @@ children of an element with class hero.*/
   border-radius: 50px;
   font-size: 16px;
   cursor: pointer;
-  border: none;
-  /*font-family: "Inter", sans-serif;*/
-  background-color: #fff1a7;
+  background-color: #E5E5E5;
+  border: 1px solid #E5E7EB;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
+.tab-button:hover {
+  background-color: #1C1B1C;
+  color: #fff;
+  border: 2px solid #FFD700;
+}
+
 .tab-button.active {
-  background-color: #ffd700;
+  background-color: #FFF1A7;
+}
+
+.tab-button.active:hover {
+  background-color: #FFD700;
+  border: 1px solid #E5E7EB;
+  color: #000;
 }
 
 /* Player section - Play page */
@@ -514,16 +651,120 @@ children of an element with class hero.*/
 }
 
 /* Volume control */
+.volume-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
 .volume-button {
+  display: flex;
   width: 46px;
   height: 42px;
-  border: 1px solid #e5e7eb;
-  border-radius: 9999px;
-  display: flex;
+  padding: 13px;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
+  background: none;
+  border: none;
   cursor: pointer;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+}
+
+.volume-button:hover {
+  background-color: #FFF1A7;
+}
+
+.volume-button:active,
+.volume-button.active {
+  background-color: #FFD700;
+}
+
+.volume-button.muted {
   background-color: transparent;
+}
+
+.volume-button.muted:hover {
+  background-color: #f5f5f5;
+}
+
+.volume-button.muted path {
+  fill: #999;
+}
+
+/* Volume Slider Styles */
+.volume-slider {
+  width: 100px;
+  height: 4px;
+  background: #E5E7EB;
+  border-radius: 2px;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Slider Track */
+.volume-slider::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  background: #E5E7EB;
+  border-radius: 2px;
+  border: none;
+}
+
+.volume-slider::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  background: #E5E7EB;
+  border-radius: 2px;
+  border: none;
+}
+
+/* Slider Thumb */
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #FFD700;
+  cursor: pointer;
+  margin-top: -4px;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.volume-slider::-moz-range-thumb {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background: #FFD700;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effects */
+.volume-slider:hover::-webkit-slider-thumb {
+  background: #FFC700;
+}
+
+.volume-slider:hover::-moz-range-thumb {
+  background: #FFC700;
+}
+
+/* Focus styles */
+.volume-slider:focus {
+  outline: none;
+}
+
+.volume-slider:focus::-webkit-slider-thumb {
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
+}
+
+.volume-slider:focus::-moz-range-thumb {
+  box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.2);
 }
 
 /* Action buttons container */
@@ -534,12 +775,17 @@ children of an element with class hero.*/
 
 .action-button {
   padding: 11px 24px;
-  border: 1px solid #e5e7eb;
+  border: 1px solid #E5E7EB;
   border-radius: 50px;
   font-size: 16px;
   cursor: pointer;
-  background-color: transparent;
-  /*font-family: "Inter", sans-serif;*/
+  background-color: #E5E5E5;
+}
+
+.action-button:hover {
+  background-color: #1C1B1C;
+  color: #fff;
+  border: 2px solid #FFD700;
 }
 
 /* Tutorial section - Play page */
@@ -580,7 +826,7 @@ children of an element with class hero.*/
 .search-container,
 .music-grid {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
@@ -620,6 +866,7 @@ children of an element with class hero.*/
   font-size: 16px;
   color: #525252;
   background: transparent;
+  border-radius: 50px;
 }
 
 /* Search buttons styles */
@@ -629,12 +876,15 @@ children of an element with class hero.*/
   border-radius: 50px;
   cursor: pointer;
   white-space: nowrap;
+  background-color: #E5E5E5;
+  border: 1px solid #E5E7EB;
+  color: #000;
 }
 
-.search-button {
-  background-color: #171717;
+.search-button:hover {
+  background-color: #1C1B1C;
   color: #fff;
-  border: none;
+  border: 2px solid #FFD700;
 }
 
 /* 
@@ -714,6 +964,7 @@ children of an element with class hero.*/
   height: 100%;
   opacity: 0;
   cursor: pointer;
+  border-radius: 8px;
 }
 
 .file-label {
@@ -753,23 +1004,25 @@ children of an element with class hero.*/
   flex: 1;
   padding: 12px 16px;
   border: 1px solid #E5E7EB;
-  border-radius: 8px;
+  border-radius: 50px;
   font-size: 16px;
 }
 
 .upload-button {
   padding: 12px 24px;
-  background-color: #fff1a7;
+  background-color: #FFF1A7;
   color: #000;
-  border: none;
-  border-radius: 8px;
+  border: 1px solid #E5E7EB;
+  border-radius: 50px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .upload-button:hover {
-  background-color: #ffd700;
+  background-color: #FFD700;
+  color: #000;
+  border: 1px solid #E5E7EB;
 }
 
 /* Music Collection styles */
@@ -878,19 +1131,33 @@ children of an element with class hero.*/
   height: 4px;
   background-color: #E5E7EB;
   border-radius: 2px;
+  margin: 0 10px;
+  cursor: pointer;
+  position: relative;
   overflow: hidden;
+}
+
+.progress-bar:hover {
+  height: 6px;
+  margin-top: -1px;
+  margin-bottom: -1px;
 }
 
 .progress-fill {
   height: 100%;
   background-color: #ffd700;
-  width: 0%;
+  width: 0;
+  border-radius: 2px;
   transition: width 0.1s linear;
+}
+
+.progress-bar:hover .progress-fill {
+  background-color: #ffd700;
 }
 
 .time-display {
   font-size: 14px;
-  color: #6B7280;
+  color: #525252;
   min-width: 100px;
   text-align: right;
 }
@@ -1069,6 +1336,11 @@ children of an element with class hero.*/
   .bell-image {
     object-position: center -38px;
   }
+
+/* Adjust button position  */
+  .back-to-top {
+    right: 1rem; 
+  }
 }
 
 @media screen and (max-width: 768px) {
@@ -1118,11 +1390,6 @@ children of an element with class hero.*/
     width: 100%;
     justify-content: center;
     gap: 12px;
-  }
-
-  /* Hide share button on mobile */
-  .action-button:last-child {
-    display: none;
   }
 }
 
