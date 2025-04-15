@@ -31,13 +31,6 @@ document.addEventListener('DOMContentLoaded', function() {
       tabButtons.forEach(btn => btn.classList.remove('active'));
       // Add active class to clicked button
       this.classList.add('active');
-
-      // Scroll to corresponding section
-      // Reference: https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
-      const targetSection = this.textContent.trim() === 'Virtual Player' ? playerSection : tutorialSection;
-      if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
     });
   });
 
@@ -72,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // - Search implementation: https://www.w3schools.com/howto/howto_js_filter_dropdown.asp
 // - Search suggestions: https://www.w3schools.com/howto/howto_js_filter_list.asp
 // - Dynamic content: https://www.w3schools.com/howto/howto_js_filter_elements.asp
-// - Search box: https://www.w3schools.com/howto/howto_css_searchbox.asp
+// - Search box: https://www.w3schools.com/howto/howto_css_searchbar.asp
 
 function initializeSearch() {
   const searchForm = document.querySelector('.search form');
