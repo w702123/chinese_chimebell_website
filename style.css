@@ -200,7 +200,7 @@ children of an element with class hero.*/
 .primary {
   background-color: #fff1a7;
   color: #000;
-  border: 1px solid #E5E7EB;
+  border: 2px solid #E5E7EB;
 }
 
 .primary:hover,
@@ -377,13 +377,6 @@ children of an element with class hero.*/
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
-}
-
-.icon, .learn, .play, .library {
-  width: 24px;
-  height: 24px;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 .features h3 {
@@ -566,20 +559,48 @@ children of an element with class hero.*/
   text-overflow: ellipsis;
 }
 
-.tab-button:hover {
+/* Record button styles */
+#recordButton {
+  background-color: #E5E5E5;
+  color: #000;
+  border: 1px solid #E5E7EB;
+}
+
+#recordButton:hover {
+  background-color: #FFD700;
+  color: #000;
+  border: 1px solid #E5E7EB;
+}
+
+#recordButton.active {
+  background-color: #FFD700;
+  color: #000;
+  border: 2px solid #E5E5E5;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+}
+
+/* Stop button styles */
+#stopButton {
+  background-color: #E5E5E5;
+  color: #000;
+  border: 1px solid #E5E7EB;
+}
+
+#stopButton:hover {
+  background-color: #1C1B1C;
+  color: #fff;
+  border: none;
+}
+
+#stopButton.active {
   background-color: #1C1B1C;
   color: #fff;
   border: 2px solid #FFD700;
-}
-
-.tab-button.active {
-  background-color: #FFF1A7;
-}
-
-.tab-button.active:hover {
-  background-color: #FFD700;
-  border: 1px solid #E5E7EB;
-  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
 }
 
 /* Player section - Play page */
@@ -775,11 +796,12 @@ children of an element with class hero.*/
 
 .action-button {
   padding: 11px 24px;
-  border: 1px solid #E5E7EB;
   border-radius: 50px;
   font-size: 16px;
   cursor: pointer;
   background-color: #E5E5E5;
+  border: 1px solid #E5E7EB;
+  color: #000;
 }
 
 .action-button:hover {
@@ -1191,11 +1213,7 @@ children of an element with class hero.*/
 }
 
 /* =================================
-   RESPONSIVE STYLES 
-================================= */
-
-/* =================================
-   1. GLOBAL RESPONSIVE STYLES
+   GLOBAL RESPONSIVE STYLES
    - Applies to all pages
    - Basic layout and navigation adjustments
 ================================= */
@@ -1238,7 +1256,118 @@ children of an element with class hero.*/
     padding: 10px 14px;
   }
 }
+/* =================================
+   HOME PAGE RESPONSIVE STYLES 
+================================= */
 
+/* Medium screens (Tablet) */
+@media screen and (max-width: 768px) {
+  /* Hero section */
+  .hero > div {
+    padding: 40px 20px;
+  }
+
+  .hero h2 {
+    margin-top: 80px;
+    font-size: 40px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 18px;
+    margin-top: 24px;
+  }
+
+  /* Search section */
+  .search {
+    padding: 24px 20px;
+  }
+
+  .search form {
+    width: 100%;
+    max-width: 600px;
+  }
+
+  /* Features section */
+  .features {
+    padding: 24px 20px;
+  }
+
+  .features article {
+    min-width: 100%;
+  }
+}
+
+/* Small screens (Mobile) */
+@media screen and (max-width: 360px) {
+  /* Hero section */
+  .hero > div {
+    padding: 32px 15px;
+  }
+
+  .hero h2 {
+    font-size: 32px;
+    line-height: 1.2;
+  }
+
+  .hero p {
+    font-size: 16px;
+    margin-top: 16px;
+  }
+
+  /* Buttons */
+  .buttons {
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+
+  /* Search section */
+  .search {
+    padding: 20px 15px;
+  }
+
+  .search form {
+    padding: 12px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .search input {
+    font-size: 14px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .search-button {
+    width: 100%;
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  /* Features section */
+  .features {
+    padding: 20px 15px;
+  }
+
+  .features article {
+    padding: 20px;
+  }
+
+  .features h3 {
+    font-size: 16px;
+  }
+
+  .features p {
+    font-size: 14px;
+  }
+}
 /* =================================
    2. LEARN PAGE RESPONSIVE STYLES
    - Chapter cards layout
@@ -1438,5 +1567,68 @@ children of an element with class hero.*/
     grid-template-columns: 1fr;
   }
 }
+
+
+/* ===== About Page Styles ===== */
+/* Content container for about page */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Section styling for about page content */
+.about-section {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading styles for about page sections */
+.about-section h2 {
+    color: #333;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+/* Paragraph styles for about page content */
+.about-section p {
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+/* Link styles for about page */
+.about-section a {
+    color: #0066cc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.about-section a:hover {
+    color: #004499;
+    text-decoration: underline;
+}
+
+/* Responsive adjustments for about page */
+@media screen and (max-width: 768px) {
+    .about-content {
+        padding: 1rem;
+    }
+    
+    .about-section {
+        padding: 1rem;
+    }
+    
+    .about-section h2 {
+        font-size: 1.3rem;
+    }
+}
+
+
 
 

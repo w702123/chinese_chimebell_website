@@ -47,10 +47,10 @@
       <main class="main-content">
         <!-- Tab navigation for switching between player and tutorial -->
         <div class="tab-navigation">
-          <!-- Virtual player tab button -->
-          <button class="tab-button active">Virtual Player</button>
-          <!-- Tutorial tab button -->
-          <button class="tab-button">Tutorial</button>
+          <!-- Record button -->
+          <button class="tab-button" id="recordButton">Record</button>
+          <!-- Stop button -->
+          <button class="tab-button" id="stopButton">Stop</button>
         </div>
 
         <!-- Virtual bells player section -->
@@ -189,7 +189,7 @@
 
             <!-- Save and share buttons -->
             <div class="action-buttons">
-              <button class="action-button">Save</button>
+              <button class="action-button" id="saveButton">Save</button>
               <button class="action-button">Share</button>
             </div>
           </div>
@@ -201,16 +201,12 @@
           <h2 class="tutorial-title">Tutorial</h2>
           <!-- Step-by-step instructions -->
           <div class="tutorial-content">
-            <p>1. Click on any bell image to play its sound (a1, b1, c1, d1, e1, f1, g1, A, B, C).</p>
-            <p>2. Click multiple bells to create your own melody.</p>
-            <p>
-              3. Adjust the volume using the slider in the bottom-left corner.
-            </p>
-            <p>
-              4. Save your music by clicking the "Save" button in the
-              bottom-right corner.
-            </p>
-            <p>5. Share your creation with others using the "Share" button.</p>
+            <p>1. Click the "Record" button to start recording your melody.</p>
+            <p>2. Click on any bell image to play its sound (a1, b1, c1, d1, e1, f1, g1, A, B, C).</p>
+            <p>3. Click multiple bells to create your own melody.</p>
+            <p>4. Click the "Stop" button when you're done recording.</p>
+            <p>5. Click "Save" to save your recording as a WAV file.</p>
+            <p>6. Adjust the volume using the slider in the bottom-left corner.</p>
             <p>Enjoy making your own bianzhong music!</p>
           </div>
         </section>

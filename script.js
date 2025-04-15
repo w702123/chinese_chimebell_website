@@ -68,13 +68,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 //---------------- Home page Search funtionality: ----------------
-// Index.html Search funtionality:
-
-
-// Initialize search functionality
-initializeSearch();
-
-//---------------- Home page Search functionality: ----------------
 // References:
 // - Search implementation: https://www.w3schools.com/howto/howto_js_filter_dropdown.asp
 // - Search suggestions: https://www.w3schools.com/howto/howto_js_filter_list.asp
@@ -554,14 +547,27 @@ function deleteMusic(id) {
 function initializeBells() {
   const bells = document.querySelectorAll('.bell-wrapper');
   const volumeButton = document.querySelector('.volume-button');
+  const recordButton = document.getElementById('recordButton');
+  const stopButton = document.getElementById('stopButton');
+  const saveButton = document.getElementById('saveButton');
   let isMuted = false;
-  let currentVolume = 1.0; // Default volume level
+  let currentVolume = 1.0;
+  let isRecording = false;
+  let audioContext = null;
+  let mediaRecorder = null;
+  let audioChunks = [];
+  let audioDestination = null;
+
+  // References:
+  // - Web Audio API: https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
+  // - MediaRecorder API: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder
+  // - HTML5 Audio Element: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
+  
+  // Implementation examples:
+  // - MediaRecorder example: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/MediaRecorder#example
+  // - Audio recording and playback: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/MediaRecorder#recording_a_media_element
 
   // Create volume slider with custom styling
-  // Reference: 
-  // https://blog.codepen.io/2017/06/09/best-volume-sliders/
-  // https://codepen.io/valyanggy/pen/qBPdBjZ
-  // https://codepen.io/emilcarlsson/pen/PPNLPy
   const volumeSlider = document.createElement('input');
   volumeSlider.type = 'range';
   volumeSlider.min = '0';
@@ -584,83 +590,142 @@ function initializeBells() {
   // Hide slider by default
   volumeSlider.style.display = 'none';
 
-  // Add click handlers to all bells
-  bells.forEach(bell => {
-    bell.addEventListener('click', function() {
-      playBellSound(this);
+  // Volume button click handler
+  volumeButton.addEventListener('click', () => {
+    volumeSlider.style.display = volumeSlider.style.display === 'none' ? 'block' : 'none';
+  });
+
+  // Volume slider change handler
+  volumeSlider.addEventListener('input', (e) => {
+    currentVolume = parseFloat(e.target.value);
+    isMuted = currentVolume === 0;
+    
+    // Update volume for all audio elements
+    bells.forEach(bell => {
+      const audio = bell.querySelector('audio');
+      if (audio) {
+        audio.volume = currentVolume;
+      }
     });
   });
 
-  // Play bell sound with visual feedback
-  // References:
-  // - Audio API: https://www.w3schools.com/tags/ref_av_dom.asp
-  // - CSS Animation: https://www.w3schools.com/css/css3_animations.asp
-  function playBellSound(bell) {
-    const audio = bell.querySelector('audio');
-    if (audio) {
-      // Reset all other bells
-      bells.forEach(otherBell => {
-        const otherAudio = otherBell.querySelector('audio');
-        if (otherAudio && otherAudio !== audio) {
-          otherAudio.pause();
-          otherAudio.currentTime = 0;
-        }
-        otherBell.classList.remove('playing');
-      });
+  // Click outside to hide volume slider
+  document.addEventListener('click', (e) => {
+    if (!volumeControls.contains(e.target)) {
+      volumeSlider.style.display = 'none';
+    }
+  });
 
-      // Set volume and play
-      audio.volume = isMuted ? 0 : currentVolume;
-      audio.currentTime = 0;
-      audio.play();
-
-      // Add visual feedback
-      bell.classList.add('playing');
-      setTimeout(() => {
-        bell.classList.remove('playing');
-      }, 500);
+  // Initialize audio context
+  function initAudioContext() {
+    if (!audioContext) {
+      audioContext = new (window.AudioContext || window.webkitAudioContext)();
+      audioDestination = audioContext.createMediaStreamDestination();
     }
   }
 
-  // Volume control with click outside handling
-  
-  if (volumeButton) {
-    // Toggle volume slider visibility when clicking the volume button
-    volumeButton.addEventListener('click', function(e) {
-      e.stopPropagation(); // Prevent document click from immediately hiding slider
-      volumeSlider.style.display = volumeSlider.style.display === 'none' ? 'block' : 'none';
-    });
-
-    // Hide volume slider when clicking outside
-    document.addEventListener('click', function(e) {
-      if (!volumeButton.contains(e.target) && !volumeSlider.contains(e.target)) {
-        volumeSlider.style.display = 'none';
-      }
-    });
-
-    // Update volume when slider changes
-    volumeSlider.addEventListener('input', function() {
-      currentVolume = parseFloat(this.value);
-      isMuted = currentVolume === 0;
+  // Setup recording functionality
+  async function setupRecording() {
+    try {
+      initAudioContext();
       
-      // Update volume button appearance
-      const volumePath = volumeButton.querySelector('path');
-      if (volumePath) {
-        if (currentVolume === 0) {
-          volumePath.style.fill = '#999';
-          volumeButton.classList.add('muted');
-        } else {
-          volumePath.style.fill = '#000';
-          volumeButton.classList.remove('muted');
+      // Create a media recorder using the audio destination stream
+      mediaRecorder = new MediaRecorder(audioDestination.stream);
+      
+      // Handle data available event
+      mediaRecorder.ondataavailable = (event) => {
+        if (event.data.size > 0) {
+          audioChunks.push(event.data);
         }
-      }
-
-      // Update volume for all audio elements
-      bells.forEach(bell => {
-        const audio = bell.querySelector('audio');
-        if (audio) {
-          audio.volume = currentVolume;
-        }
-      });
-    });
+      };
+      
+      // Start recording
+      mediaRecorder.start();
+      isRecording = true;
+      recordButton.disabled = true;
+      stopButton.disabled = false;
+      saveButton.disabled = true;
+    } catch (error) {
+      console.error('Error setting up recording:', error);
+      alert('Error setting up audio recording. Please check your browser permissions.');
+    }
   }
+
+  // Start recording
+  recordButton.addEventListener('click', async () => {
+    if (!isRecording) {
+      try {
+        await setupRecording();
+        recordButton.classList.add('active');
+        stopButton.classList.remove('active');
+      } catch (error) {
+        console.error('Error starting recording:', error);
+      }
+    }
+  });
+
+  // Stop recording
+  stopButton.addEventListener('click', () => {
+    if (isRecording && mediaRecorder) {
+      mediaRecorder.stop();
+      isRecording = false;
+      recordButton.disabled = false;
+      stopButton.disabled = true;
+      saveButton.disabled = false;
+      recordButton.classList.remove('active');
+      stopButton.classList.add('active');
+    }
+  });
+
+  // Save recording
+  saveButton.addEventListener('click', () => {
+    if (audioChunks.length > 0) {
+      const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+      const audioUrl = URL.createObjectURL(audioBlob);
+      
+      // Create download link
+      const link = document.createElement('a');
+      link.href = audioUrl;
+      link.download = `chime_bells_recording_${new Date().toISOString().replace(/[:.]/g, '-')}.wav`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(audioUrl);
+      
+      // Reset recording
+      audioChunks = [];
+    }
+  });
+
+  // Modified bell click handler with audio context
+  bells.forEach(bell => {
+    bell.addEventListener('click', async function() {
+      const audio = bell.querySelector('audio');
+      if (audio) {
+        if (!audioContext) {
+          initAudioContext();
+        }
+
+        // Create audio source from the audio element
+        const source = audioContext.createMediaElementSource(audio);
+        
+        // Connect to both the audio destination (for recording) and speakers (for playback)
+        if (isRecording) {
+          source.connect(audioDestination);
+        }
+        source.connect(audioContext.destination);
+
+        // Play the sound
+        audio.currentTime = 0;
+        audio.volume = isMuted ? 0 : currentVolume;
+        await audio.play();
+
+        // Add visual feedback
+        bell.classList.add('playing');
+        setTimeout(() => {
+          bell.classList.remove('playing');
+        }, 500);
+      }
+    });
+  });
 }
