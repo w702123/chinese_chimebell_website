@@ -200,18 +200,16 @@ children of an element with class hero.*/
 .primary {
   background-color: #fff1a7;
   color: #000;
-  border: 2px solid #E5E7EB;
 }
 
-.primary:hover,
-.primary.active {
+.primary:hover {
   background-color: #ffd700;
+  border: 2px solid #E5E7EB;
 }
 
 .secondary {
   background-color: #E5E5E5;
   color: #000;
-  border: 1px solid #E5E7EB;
   padding: 24px 66px;
 }
 
@@ -559,7 +557,17 @@ children of an element with class hero.*/
   text-overflow: ellipsis;
 }
 
-/* Record button styles */
+/* Record and Stop Button Styles
+ References:
+ *  Button state management: https://www.w3schools.com/howto/howto_js_active_element.asp 
+ *  # ID selector: https://www.w3schools.com/css/css_selectors.asp https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors
+ */
+
+/*- HTML implementation:
+ *   <button id="stopButton" class="tab-button">Stop</button>
+ *   <button id="recordButton" class="tab-button">Record</button>
+
+/* Record button styles - Controlled by recordButton.addEventListener('click') in script.js */
 #recordButton {
   background-color: #fff1a7;
   color: #000;
@@ -572,6 +580,7 @@ children of an element with class hero.*/
   border: 1px solid #E5E7EB;
 }
 
+/* Active class added/removed via JavaScript when recording starts/stops */
 #recordButton.active {
   background-color: #FFD700;
   color: #000;
@@ -581,7 +590,7 @@ children of an element with class hero.*/
   font-weight: bold;
 }
 
-/* Stop button styles */
+/* Stop button styles - Controlled by stopButton.addEventListener('click') in script.js */
 #stopButton {
   background-color: #E5E5E5;
   color: #000;
@@ -594,6 +603,7 @@ children of an element with class hero.*/
   border: none;
 }
 
+/* Active class added/removed via JavaScript when recording is stopped */
 #stopButton.active {
   background-color: #1C1B1C;
   color: #fff;
@@ -1212,18 +1222,86 @@ children of an element with class hero.*/
   opacity: 1;
 }
 
+
+
+/* ===== About Page Styles ===== */
+/* Content container for about page */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Section styling for about page content */
+.about-section {
+  margin-bottom: 4rem;
+}
+
+/* Heading styles for about page sections */
+.about-section h2 {
+  color: #333;
+  font-size: 1.8rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 0.5rem;
+}
+
+.about-section h3 {
+  color: #444;
+  font-size: 1.4rem;
+  margin: 2.5rem 0 1.5rem;
+}
+
+.about-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.about-section li {
+  margin: 1.2rem 0;
+}
+
+.about-section a {
+  color: #0066cc;
+  text-decoration: none;
+}
+
+.about-section a:hover {
+  text-decoration: underline;
+}
+
+.acknowledgment-note {
+  margin-top: 3rem;
+  color: #666;
+  font-style: italic;
+}
+
+
+
+
 /* =================================
-   GLOBAL RESPONSIVE STYLES
-   - Applies to all pages
-   - Basic layout and navigation adjustments
+   RESPONSIVE STYLES BY PAGE
+   - Global responsive styles
+   - Home page responsive styles
+   - Learn page responsive styles
+   - Play page responsive styles
+   - Library page responsive styles
+   - About page responsive styles
+================================= */
+
+/* =================================
+   1. GLOBAL RESPONSIVE STYLES
+   - Header and navigation
+   - Footer adjustments
+   - Common elements
 ================================= */
 @media screen and (max-width: 768px) {
-  /* Header adjustments for mobile */
+  /* Header */
   header {
     padding: 0 20px;
   }
 
-  /* Mobile menu toggle button */
+  /* Mobile menu toggle */
   .menu-toggle {
     display: block;
     margin-left: auto;
@@ -1244,7 +1322,7 @@ children of an element with class hero.*/
     z-index: 100;
   }
 
-  /* Responsive navigation styles when menu is open */
+  /* Navigation styles when menu is open */
   nav.topnav.responsive ul {
     display: flex;
     flex-direction: column;
@@ -1256,8 +1334,13 @@ children of an element with class hero.*/
     padding: 10px 14px;
   }
 }
+
 /* =================================
-   HOME PAGE RESPONSIVE STYLES 
+   2. HOME PAGE RESPONSIVE STYLES
+   - Hero section
+   - Buttons
+   - Search section
+   - Features section
 ================================= */
 
 /* Medium screens (Tablet) */
@@ -1276,6 +1359,12 @@ children of an element with class hero.*/
   .hero p {
     font-size: 18px;
     margin-top: 24px;
+  }
+
+  /* Button adjustments */
+  .btn, .primary, .secondary {
+    padding: 18px 25px;
+    font-size: 15px;
   }
 
   /* Search section */
@@ -1322,7 +1411,7 @@ children of an element with class hero.*/
     width: 100%;
   }
 
-  .btn {
+  .btn, .primary, .secondary {
     width: 100%;
     padding: 12px 20px;
     font-size: 14px;
@@ -1368,8 +1457,9 @@ children of an element with class hero.*/
     font-size: 14px;
   }
 }
+
 /* =================================
-   2. LEARN PAGE RESPONSIVE STYLES
+   3. LEARN PAGE RESPONSIVE STYLES
    - Chapter cards layout
    - Content readability
    - Navigation elements
@@ -1380,7 +1470,7 @@ children of an element with class hero.*/
     margin: 2rem 100px 2rem 150px;
   }
   
-  /* Ensure content fits within viewport */
+  /* Content width adjustments */
   .chapter-content, 
   .chapter-card .sticky h2,
   .chapter-card img,
@@ -1390,7 +1480,7 @@ children of an element with class hero.*/
 }
 
 @media screen and (max-width: 992px) {
-  /* Medium screen margin adjustments */
+  /* Medium screen chapter card adjustments */
   .chapter-card {
     margin: 2rem 50px;
   }
@@ -1403,7 +1493,7 @@ children of an element with class hero.*/
     padding: 1.5rem;
   }
 
-  /* Typography adjustments for readability */
+  /* Typography adjustments */
   .chapter-content h3 {
     font-size: 1.3rem;
   }
@@ -1418,13 +1508,13 @@ children of an element with class hero.*/
     padding: 1rem 0;
   }
 
-  /* Navigation elements positioning */
+  /* Navigation elements */
   .figcaption {
     margin-left: 20px;
     margin-right: 20px;
   }
 
-  /* Back to top button mobile styling */
+  /* Back to top button */
   .back-to-top {
     bottom: 20px;
     right: 20px;
@@ -1435,17 +1525,16 @@ children of an element with class hero.*/
 }
 
 @media screen and (max-width: 480px) {
-  /* Small mobile device adjustments */
+  /* Small mobile adjustments */
   .chapter-card {
     margin: 1rem 15px;
     padding: 1rem;
   }
 }
 
-
 /* =================================
-   3. PLAY PAGE RESPONSIVE STYLES
-   - Bell layout adjustments
+   4. PLAY PAGE RESPONSIVE STYLES
+   - Bell layout
    - Player controls
    - Interactive elements
 ================================= */
@@ -1466,28 +1555,27 @@ children of an element with class hero.*/
     object-position: center -38px;
   }
 
-/* Adjust button position  */
+  /* Back to top button position */
   .back-to-top {
-    right: 1rem; 
+    right: 1rem;
   }
 }
 
 @media screen and (max-width: 768px) {
-  /* Mobile player section layout */
+  /* Mobile player section */
   .player-section {
     padding: 40px 20px;
   }
 
-  /* Mobile bells grid layout */
+  /* Mobile bells grid */
   .bells-container {
-    display: grid;
     grid-template-columns: repeat(3, minmax(80px, 1fr));
     column-gap: 8px;
     row-gap: 16px;
     max-width: 300px;
   }
 
-  /* Mobile bell size and positioning */
+  /* Mobile bell adjustments */
   .bell-wrapper {
     width: 80px;
     height: 80px;
@@ -1502,12 +1590,12 @@ children of an element with class hero.*/
     display: none;
   }
 
-  /* Mobile note text size */
+  /* Mobile note text */
   .bell-note {
     font-size: 16px;
   }
 
-  /* Mobile player controls layout */
+  /* Mobile player controls */
   .player-controls {
     flex-direction: column;
     gap: 20px;
@@ -1545,10 +1633,10 @@ children of an element with class hero.*/
 }
 
 /* =================================
-   4. LIBRARY PAGE RESPONSIVE STYLES
-   - Music grid layout
+   5. LIBRARY PAGE RESPONSIVE STYLES
+   - Search container
    - Upload section
-   - Collection display
+   - Music grid
 ================================= */
 @media screen and (max-width: 768px) {
   /* Section padding adjustments */
@@ -1566,67 +1654,35 @@ children of an element with class hero.*/
   .music-grid {
     grid-template-columns: 1fr;
   }
+
+  /* Search container adjustments */
+  .search-container {
+    max-width: calc(100% - 40px);
+    margin: 20px;
+    padding: 8px 16px;
+  }
 }
 
-
-/* ===== About Page Styles ===== */
-/* Content container for about page */
-.about-content {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 2rem;
-}
-
-/* Section styling for about page content */
-.about-section {
-    margin-bottom: 2rem;
-    padding: 1.5rem;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-/* Heading styles for about page sections */
-.about-section h2 {
-    color: #333;
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 0.5rem;
-}
-
-/* Paragraph styles for about page content */
-.about-section p {
-    color: #666;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-}
-
-/* Link styles for about page */
-.about-section a {
-    color: #0066cc;
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-.about-section a:hover {
-    color: #004499;
-    text-decoration: underline;
-}
-
-/* Responsive adjustments for about page */
+/* =================================
+   6. ABOUT PAGE RESPONSIVE STYLES
+   - Content layout
+   - Typography
+================================= */
 @media screen and (max-width: 768px) {
-    .about-content {
-        padding: 1rem;
-    }
+  /* Content container adjustments */
+  .about-content {
+    padding: 1rem;
+  }
     
-    .about-section {
-        padding: 1rem;
-    }
+  /* Section adjustments */
+  .about-section {
+    padding: 1rem;
+  }
     
-    .about-section h2 {
-        font-size: 1.3rem;
-    }
+  /* Typography adjustments */
+  .about-section h2 {
+    font-size: 1.3rem;
+  }
 }
 
 

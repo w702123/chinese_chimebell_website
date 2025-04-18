@@ -6,6 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chime Bells Player</title>
     <link rel="stylesheet" href="style.css" />
+        
+    <!-- Audio Processing Scripts -->
+    <!-- lamejs library (convert wav to mp3) -->
+    <!-- This library is used to convert WAV audio recordings to MP3 format -->
+    <!-- Reference: https://github.com/zhuker/lamejs -->
+    <!-- Reference of how to use lamejs: https://scribbler.live/2024/12/05/Coverting-Wav-to-Mp3-in-JavaScript-Using-Lame-js.html -->
+    <script src="https://cdn.jsdelivr.net/npm/lamejs@1.2.0/lame.min.js"></script>>
+    <script src="js/mp3-encoder.js"></script>
+
+    <script src="script.js"></script>
+    
   </head>
   <body>
     <!-- Main wrapper for all content -->
@@ -207,7 +218,7 @@
             <p>2. Click on any bell image to play its sound (a1, b1, c1, d1, e1, f1, g1, A, B, C).</p>
             <p>3. Click multiple bells to create your own melody.</p>
             <p>4. Click the "Stop" button when you're done recording.</p>
-            <p>5. Click "Save" to save your recording as a WAV file.</p>
+            <p>5. Click "Save" to save your recording as a mp3 file.</p>
             <p>6. Adjust the volume using the slider in the bottom-left corner.</p>
             <p>Enjoy making your own bianzhong music!</p>
           </div>
@@ -219,7 +230,6 @@
         <a href="about.html">About Chinese Chime Bells</a>
       </footer>
     </div>
-    
-    <script src="script.js"></script>
+
   </body>
 </html>

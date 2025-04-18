@@ -1,17 +1,24 @@
-// -------- RESPONSIVE TOP NAVIGATION MENU --------
-// responsive top navigation menu Reference: https://www.w3schools.com/howto/howto_js_topnav_responsive.asp
+// ===== RESPONSIVE TOP NAVIGATION MENU==================
+// Reference: https://www.w3schools.com/howto/howto_js_topnav_responsive.asp
+
 function toggleMobileMenu() {
   var x = document.querySelector(".topnav");
+  // When called, it either adds or removes the 'responsive' class from the navigation
   if (!x.classList.contains("responsive")) {
-    x.classList.add("responsive");
+    x.classList.add("responsive");           
   } else {
     x.classList.remove("responsive");
   }
 }
 
+// ========== DOM CONTENT LOADED EVENT HANDLER ===========
 // Add event listener when DOM content is loaded
 // Reference: https://www.w3schools.com/js/js_htmldom_eventlistener.asp
+
+// This event ensures all DOM elements are loaded before running any JavaScript
+
 document.addEventListener('DOMContentLoaded', function() {
+  // Initialize mobile menu button
   const menuButton = document.getElementById('menuToggle');
   menuButton.addEventListener('click', toggleMobileMenu);
 
@@ -21,10 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
   // Initialize tab navigation
   // Tab Navigation
   // Reference: https://www.w3schools.com/howto/howto_js_tabs.asp
+  
+  // Get all tab buttons
   const tabButtons = document.querySelectorAll('.tab-button');
-  const playerSection = document.querySelector('.player-section');
-  const tutorialSection = document.querySelector('.tutorial-section');
 
+  // Add click event listeners to all tab buttons (Record button and stop button on play page)
+  // handle the active state of tabs
   tabButtons.forEach(button => {
     button.addEventListener('click', function() {
       // Remove active class from all buttons
@@ -34,17 +43,21 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
-  // Share button functionality
+  // =========== SHARE BUTTON FUNCTIONALITY =================
   // Reference: https://www.w3schools.com/howto/howto_js_copy_clipboard.asp
+  
+  // Initialize 
   const shareButton = document.querySelector('.action-button:last-child');
   if (shareButton) {
     shareButton.addEventListener('click', async function() {
       const url = 'https://w702123.github.io/chinese_chimebell_website/';
       try {
+        // Attempt to copy URL to clipboard 
         await navigator.clipboard.writeText(url);
-        // Change button text temporarily to show feedback
+        // Provide visual feedback by temporarily changing button text
         const originalText = this.textContent;
         this.textContent = 'Copied!';
+        // Reset button text after 2 seconds
         setTimeout(() => {
           this.textContent = originalText;
         }, 2000);
@@ -58,23 +71,26 @@ document.addEventListener('DOMContentLoaded', function() {
   if (document.querySelector('.bells-container')) {
     initializeBells();
   }
-});
+}); 
 
-//---------------- Home page Search funtionality: ----------------
+// ========= SEARCH FUNCTIONALITY ==============
 // References:
 // - Search implementation: https://www.w3schools.com/howto/howto_js_filter_dropdown.asp
 // - Search suggestions: https://www.w3schools.com/howto/howto_js_filter_list.asp
 // - Dynamic content: https://www.w3schools.com/howto/howto_js_filter_elements.asp
 // - Search box: https://www.w3schools.com/howto/howto_css_searchbar.asp
 
+// Initialize 
 function initializeSearch() {
+  // Get DOM elements for search functionality
   const searchForm = document.querySelector('.search form');
   const searchInput = document.getElementById('searchInput');
   const searchResults = document.getElementById('searchResults');
 
-  // Define searchable content
+  // Define searchable content structure
+  // Contains all the content that can be searched
   const pageContent = {
-    'learn.html': {
+    'learn.html': {   // Organized by page with title and relevant keywords
       title: 'Learn',
       content: [
         'History of Chinese Chime Bells',
@@ -109,23 +125,31 @@ function initializeSearch() {
     }
   };
 
+  // Add submit event listener to search form
   if (searchForm) {
     searchForm.addEventListener('submit', function(e) {
+      // Prevent form from submitting and refreshing page
       e.preventDefault();
+      // Get search query and normalize it
       const query = searchInput.value.toLowerCase().trim();
       
+      // Clear results if search query is empty
       if (!query) {
         searchResults.innerHTML = '';
         return;
       }
 
+      // Array to store search results
       let results = [];
-      // Search through content
+      
+      // Search through content of each page
       for (const [page, data] of Object.entries(pageContent)) {
+        // Filter content items that match the search query
         const matches = data.content.filter(item => 
           item.toLowerCase().includes(query)
         );
         
+        // If matches found, add to results array
         if (matches.length > 0) {
           results.push({
             page: page,
@@ -135,14 +159,21 @@ function initializeSearch() {
         }
       }
 
+      // Display search results with animation   
+     // Reference: https://codepen.io/san_coder13/pen/VwYLjJB
       displaySearchResults(results, query);
     });
   }
 
-  // Display search results with animation
-  // Reference: https://codepen.io/san_coder13/pen/VwYLjJB
+
   
+  // Function to display search results in a formatted way
+  // Includes:
+  // - Results count
+  // - Matched items grouped by page
+  // - Links to relevant pages
   function displaySearchResults(results, query) {
+    // Display message if no results found
     if (results.length === 0) {
       searchResults.innerHTML = `
         <div class="no-results">
@@ -152,6 +183,7 @@ function initializeSearch() {
       return;
     }
 
+    // Generate HTML for each result item
     const resultsHTML = results.map(result => `
       <div class="result-item">
         <h3><a href="${result.page}">${result.title}</a></h3>
@@ -161,6 +193,7 @@ function initializeSearch() {
       </div>
     `).join('');
 
+    // Combine header and results into final HTML
     searchResults.innerHTML = `
       <div class="results-header">
         <h2>Search Results</h2>
@@ -171,27 +204,32 @@ function initializeSearch() {
   }
 }
 
-//------ learn page---------------
+// ======== LEARN PAGE FUNCTIONALITY ========
+
 // References: 
 // - Back to top button: https://www.w3schools.com/howto/howto_js_scroll_to_top.asp
 // - Smooth scrolling: https://www.w3schools.com/howto/howto_css_smooth_scroll.asp
-// https://codepen.io/matthewcain/pen/ZepbeR
-// Back to top button functionality
+// - Animation reference: https://codepen.io/matthewcain/pen/ZepbeR
+
+// Initialize back to top button function
 document.addEventListener('DOMContentLoaded', function() {
   const backToTopButton = document.getElementById('backToTop');
   
   if (backToTopButton) {
-    // Show/hide button based on scroll position
+    // Add scroll event listener to show/hide button based on scroll position
     window.addEventListener('scroll', function() {
+      // Show button when user scrolls down 100px from the top
       if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
         backToTopButton.style.display = "flex";
       } else {
+        // Hide button when user is near the top
         backToTopButton.style.display = "none";
       }
     });
     
-    // Scroll to top when button is clicked
+    // Add click event listener to scroll back to top
     backToTopButton.addEventListener('click', function() {
+      // Smooth scroll to top of page
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -200,11 +238,9 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-
-//------ library page---------------
-
+// ======== LIBRARY PAGE FUNCTIONALITY =================
 /*
- * Library page functionality
+ * Library page functionality implements audio playback and management
  * References:
  * - HTML5 Audio API: https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
  * - FileReader API: https://developer.mozilla.org/en-US/docs/Web/API/FileReader
@@ -219,6 +255,7 @@ https://codepen.io/Tzyinc/pen/wvWKzjb
 https://codepen.io/mark_sottek/pen/yLrwPJe
 */
 
+// Initialize library function
 document.addEventListener('DOMContentLoaded', function() {
   const uploadForm = document.getElementById('uploadForm');
   const musicGrid = document.getElementById('musicGrid');
@@ -226,7 +263,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const searchInput = document.getElementById('searchInput');
   const searchButton = document.querySelector('.search-button');
 
-  // File input handling
+  // File input elements
   const musicFileInput = document.getElementById('musicFile');
   const coverImageInput = document.getElementById('coverImage');
   const musicFileName = document.getElementById('musicFileName');
@@ -234,8 +271,9 @@ document.addEventListener('DOMContentLoaded', function() {
   const imagePreview = document.getElementById('imagePreview');
 
   // Handle music file selection
-   //	When you pick a music file, it shows the file name.
-
+  // When a music file is selected:
+  // 1. Display the file name
+  // 2. Update UI to show file is selected
   if (musicFileInput) {
     musicFileInput.addEventListener('change', function(e) {
       const file = e.target.files[0];
@@ -248,18 +286,18 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+
   // Handle cover image selection
-   // Image preview implementation using FileReader API
-   // Reference: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
-  //	When you pick a cover image, it shows a preview image using FileReader.
+  // Reference: https://developer.mozilla.org/en-US/docs/Web/API/FileReader/readAsDataURL
   if (coverImageInput) {
     coverImageInput.addEventListener('change', function(e) {
       const file = e.target.files[0];
       if (file) {
+        // Update file name display
         imageFileName.textContent = file.name;
         coverImageInput.parentElement.querySelector('.file-label').classList.add('has-file');
         
-        // Show image preview
+        // Create and display image preview
         const reader = new FileReader();
         reader.onload = function(e) {
           imagePreview.innerHTML = `<img src="${e.target.result}" alt="Cover preview">`;
@@ -267,6 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
         };
         reader.readAsDataURL(file);
       } else {
+        // Reset UI if no file selected
         imageFileName.textContent = '';
         imagePreview.innerHTML = '';
         imagePreview.style.display = 'none';
@@ -285,6 +324,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Search handler function to filter music cards based on search input
   function handleSearch() {
     const searchTerm = searchInput.value.toLowerCase().trim();
     const musicCards = musicGrid.querySelectorAll('.music-card');
@@ -299,17 +339,26 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
+  // Initialize upload form if it exists
   if (uploadForm) {
     uploadForm.addEventListener('submit', handleMusicUpload);
   }
 
-  // Load existing music from localStorage
+  // Load existing music from localStorage when page loads
   loadMusicCollection();
 
   /* 
    * Music player implementation using HTML5 Audio API
    * Reference: https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement
    */
+  
+  // Handle music upload process
+  // This function:
+  // 1. Creates object URLs for music files
+  // 2. Converts cover images to Base64
+  // 3. Gets audio duration
+  // 4. Saves to localStorage
+  // 5. Updates UI
   async function handleMusicUpload(e) {
     e.preventDefault();
     
@@ -322,10 +371,10 @@ document.addEventListener('DOMContentLoaded', function() {
       return;
     }
     
-    // Create object URL for the music file
+    // Create object URL for the music file for playback
     const musicUrl = URL.createObjectURL(musicFile);
     
-    // Convert cover image to Base64 if exists
+    // Convert cover image to Base64 if exists, otherwise use default
     let coverUrl = 'default-cover.jpg';
     if (coverFile) {
       coverUrl = await new Promise((resolve) => {
@@ -335,7 +384,7 @@ document.addEventListener('DOMContentLoaded', function() {
       });
     }
     
-    // Create audio element to get duration
+    // Create temporary audio element to get duration
     const audio = new Audio(musicUrl);
     await new Promise(resolve => {
       audio.addEventListener('loadedmetadata', resolve);
@@ -355,28 +404,32 @@ document.addEventListener('DOMContentLoaded', function() {
       duration: duration
     };
     
-    // Save to localStorage
+    // Save to localStorage and update UI
     const musicCollection = JSON.parse(localStorage.getItem('musicCollection') || '[]');
     musicCollection.push(musicEntry);
     localStorage.setItem('musicCollection', JSON.stringify(musicCollection));
     
-    // Add music card to grid
+    // Add new music card to the grid
     addMusicCard(musicEntry);
     
-    // Reset form
+    // Reset form and preview
     e.target.reset();
     imagePreview.innerHTML = '';
     imagePreview.style.display = 'none';
     
-    // Hide empty state if visible
+    // Update empty state visibility
     document.getElementById('emptyState').style.display = 'none';
   }
 
-  /* 
-   * Music card UI implementation
-   * Design inspired by Spotify's card layout and SoundCloud's player interface
-   */
-    // Add a music card to the display
+ 
+  
+  // Function to add a music card to the display
+  // Creates a card with:
+  // - Cover image
+  // - Title
+  // - Duration
+  // - Playback controls
+  // - Progress bar
   function addMusicCard(music) {
     const musicGrid = document.getElementById('musicGrid');
     
@@ -411,57 +464,72 @@ document.addEventListener('DOMContentLoaded', function() {
     musicGrid.appendChild(card);
   }
 
-  // Load music collection from localStorage
+  // Load music collection from localStorage and display cards
   function loadMusicCollection() {
     const musicCollection = JSON.parse(localStorage.getItem('musicCollection')) || [];
     
+    // Hide empty state if there are music items
     if (musicCollection.length > 0 && emptyState) {
       emptyState.style.display = 'none';
     }
     
+    // Create cards for each music item
     musicCollection.forEach(entry => addMusicCard(entry));
   }
 });
 
-// Format duration from seconds to MM:SS
+
+// ====== UTILITY FUNCTIONS AND AUDIO CONTROL ========
+
+// Format duration from seconds to MM:SS format
 function formatDuration(seconds) {
   const minutes = Math.floor(seconds / 60);
   const remainingSeconds = Math.floor(seconds % 60);
   return `${minutes}:${remainingSeconds.toString().padStart(2, '0')}`;
 }
 
-// Global audio player instance
+// Global audio player instance to manage currently playing audio
 let currentAudio = null;
 let currentButton = null;
 
-// Function to update progress bar and time display
+// Update progress bar and time display during playback
 function updateProgress(controls, audio) {
   const progressBar = controls.querySelector('.progress-bar');
-  const progressFill = controls.querySelector('.progress-fill');
-  const timeDisplay = controls.querySelector('.time-display');
+  const progressFill = controls.querySelector('.progress-fill'); // - Progress bar fill width
+  const timeDisplay = controls.querySelector('.time-display'); // - Current time/total time display
   
+  // Calculate and set progress percentage
   const progress = (audio.currentTime / audio.duration) * 100;
   progressFill.style.width = `${progress}%`;
   
+  // Update time display
   timeDisplay.textContent = `${formatTime(audio.currentTime)} / ${formatTime(audio.duration)}`;
 }
 
-// Add click handler for progress bar
+// Setup click handler for progress bar seeking
 function setupProgressBarControl(controls, audio) {
   const progressBar = controls.querySelector('.progress-bar');
   
   progressBar.addEventListener('click', function(e) {
+    // Calculate click position relative to progress bar width
     const rect = progressBar.getBoundingClientRect();
     const clickPosition = (e.clientX - rect.left) / rect.width;
+    // Set audio time based on click position
     const newTime = clickPosition * audio.duration;
     audio.currentTime = newTime;
     updateProgress(controls, audio);
   });
 }
 
-// Toggle play/pause
+// Toggle play/pause function
+// Handles:
+// - Playing new audio
+// - Pausing current audio
+// - Resuming paused audio
+// - Updating UI state
 function togglePlay(button, musicUrl) {
   if (currentAudio && currentAudio.src === musicUrl) {
+    // Toggle play/pause for current audio
     if (currentAudio.paused) {
       currentAudio.play();
       updatePlayButton(button, true);
@@ -470,39 +538,44 @@ function togglePlay(button, musicUrl) {
       updatePlayButton(button, false);
     }
   } else {
+    // Stop currently playing audio if exists
     if (currentAudio) {
       currentAudio.pause();
       updatePlayButton(currentButton, false);
     }
     
+    // Create and setup new audio instance
     currentAudio = new Audio(musicUrl);
     currentButton = button;
     
     // Setup progress bar control
     setupProgressBarControl(button.parentElement, currentAudio);
     
+    // Add timeupdate listener for progress
     currentAudio.addEventListener('timeupdate', () => {
       updateProgress(button.parentElement, currentAudio);
     });
     
+    // Handle playback end
     currentAudio.addEventListener('ended', () => {
       updatePlayButton(button, false);
       updateProgress(button.parentElement, currentAudio);
     });
     
+    // Start playback
     currentAudio.play();
     updatePlayButton(button, true);
   }
 }
 
-// Update play button icon
+// Update play button icon based on playback state
 function updatePlayButton(button, isPlaying) {
   button.innerHTML = isPlaying
     ? '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M6 4h4v16H6V4zm8 0h4v16h-4V4z" fill="currentColor"/></svg>'
     : '<svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="currentColor"/></svg>';
 }
 
-// Format time in MM:SS
+// Format time in MM:SS format
 // Reference: https://www.w3schools.com/js/js_date_formats.asp
 function formatTime(seconds) {
   const minutes = Math.floor(seconds / 60);
@@ -513,7 +586,6 @@ function formatTime(seconds) {
 // Delete music with confirmation
 // Reference: https://www.w3schools.com/js/js_popup.asp
 // Reference: https://codepen.io/szymongabrek/pen/QMmeyQ
-
 function deleteMusic(id) {
   if (confirm('Are you sure you want to delete this music?')) {
     // Remove from localStorage
@@ -535,14 +607,23 @@ function deleteMusic(id) {
   }
 }
 
-//---------------- Play page functionality: ----------------
+// ============ PLAY PAGE FUNCTIONALITY - INTERACTIVE CHIME BELLS ====================
 
+// Initialize the bells functionality with audio and recording features
+// function sets up:
+// 1. Bell click handlers and sound playback
+// 2. Volume control with mute/unmute
+// 3. Recording functionality with MediaRecorder
+// 4. Audio processing with Web Audio API
 function initializeBells() {
+  // Get DOM elements for bells functionality
   const bells = document.querySelectorAll('.bell-wrapper');
   const volumeButton = document.querySelector('.volume-button');
   const recordButton = document.getElementById('recordButton');
   const stopButton = document.getElementById('stopButton');
   const saveButton = document.getElementById('saveButton');
+  
+  // Initialize audio context and recording state
   let audioContext = null;
   let isRecording = false;
   let audioDestination = null;
@@ -560,29 +641,28 @@ function initializeBells() {
   volumeSlider.value = currentVolume;
   volumeSlider.className = 'volume-slider';
   
-  // Create a container for volume controls
-  const volumeControls = document.createElement('div');
+  // Create container for volume controls
+  const volumeControls = document.createElement('div');  // Groups volume button and slider
   volumeControls.className = 'volume-controls';
   volumeControls.style.display = 'flex';
   volumeControls.style.alignItems = 'center';
   
-  // Move the volume button into the container
+  // Setup volume controls in the DOM
   volumeButton.parentNode.insertBefore(volumeControls, volumeButton);
   volumeControls.appendChild(volumeButton);
   volumeControls.appendChild(volumeSlider);
   
   // Hide slider by default
   volumeSlider.style.display = 'none';
-
   // Volume button click handler
   volumeButton.addEventListener('click', () => {
-    volumeSlider.style.display = volumeSlider.style.display === 'none' ? 'block' : 'none';
+    volumeSlider.style.display = volumeSlider.style.display === 'none' ? 'block' : 'none';   // Toggles visibility of volume slider
   });
 
   // Volume slider change handler
   volumeSlider.addEventListener('input', (e) => {
     currentVolume = parseFloat(e.target.value);
-    isMuted = currentVolume === 0;
+    isMuted = currentVolume === 0;  // Updates volume level and mute state
   });
 
   // Click outside to hide volume slider
@@ -605,10 +685,10 @@ function initializeBells() {
         initAudioContext();
       }
       
-      // Create a media recorder using the audio destination stream
+      // Create MediaRecorder instance for recording audio
       mediaRecorder = new MediaRecorder(audioDestination.stream);
       
-      // Handle data available event
+      // Handle recorded audio data
       mediaRecorder.ondataavailable = (event) => {
         if (event.data.size > 0) {
           audioChunks.push(event.data);
@@ -627,7 +707,8 @@ function initializeBells() {
     }
   }
 
-  // Start recording
+  // Start recording handler
+  // Initiates audio recording when record button is clicked
   recordButton.addEventListener('click', async () => {
     if (!isRecording) {
       try {
@@ -640,7 +721,8 @@ function initializeBells() {
     }
   });
 
-  // Stop recording
+  // Stop recording handler
+  // Stops ongoing recording and enables save functionality
   stopButton.addEventListener('click', () => {
     if (isRecording && mediaRecorder) {
       mediaRecorder.stop();
@@ -653,54 +735,75 @@ function initializeBells() {
     }
   });
 
-  // Save recording
-  saveButton.addEventListener('click', () => {
+// Save recording handler
+
+// Problem in saving the recording:
+// Convert recorded audio to MP3 format because the generated WAV files are not true WAV files.
+// Some browsers allow setting the file extension to .wav, but the actual content is encoded in WebM or Opus format.
+// As a result, these files may not play in standard media players like Apple Music or QuickTime.
+// I encountered the same issue and found this helpful article online: 
+// https://franzeus.medium.com/record-audio-in-js-and-upload-as-wav-or-mp3-file-to-your-backend-1a2f35dea7e8
+// MP3 is more reliable and widely supported across platforms.
+// Reference: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/isTypeSupported_static --> This page shows that 'audio/wav' is not a supported MIME type for MediaRecorder in most browsers
+
+  // Converts recording to MP3 and triggers download
+  // Reference: https://github.com/zhuker/lamejs
+  // Reference of how to use lamejs: https://scribbler.live/2024/12/05/Coverting-Wav-to-Mp3-in-JavaScript-Using-Lame-js.html
+  saveButton.addEventListener('click', async () => {
     if (audioChunks.length > 0) {
-      const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-      const audioUrl = URL.createObjectURL(audioBlob);
-      
-      // Create download link
-      const link = document.createElement('a');
-      link.href = audioUrl;
-      link.download = `chime_bells_recording_${new Date().toISOString().replace(/[:.]/g, '-')}.wav`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      URL.revokeObjectURL(audioUrl);
-      
-      // Reset recording
-      audioChunks = [];
+      try {
+        // Convert recorded audio to MP3 format
+        const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+        const mp3Blob = await window.convertWavToMp3(audioBlob);
+        
+        // Create and trigger download link
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(mp3Blob); 
+        link.download = `chime_bells_recording_${new Date().toISOString().replace(/[:.]/g, '-')}.mp3`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(link.href);
+        
+        // Reset recording buffer
+        audioChunks = [];
+      } catch (error) {
+        console.error('Error saving recording:', error);
+        alert('Error saving recording: ' + error.message);
+      }
     }
   });
 
   // Bell click handler
+  // Sets up interactive bell sounds with audio processing
   bells.forEach(bell => {
     bell.addEventListener('click', async function() {
-      // Get the audio source URL
+      // Get audio source for the bell
       const audioSrc = bell.querySelector('audio').src;
       
-      // Create a new audio element
+      // Create new audio element for playback
       const audio = new Audio(audioSrc);
       
+      // Initialize audio context if needed
       if (!audioContext) {
         initAudioContext();
       }
 
-      // Create a new audio source
+      // Create and connect audio source
       const source = audioContext.createMediaElementSource(audio);
       
-      // Connect to destination if recording
+      // Connect to recording destination if recording
       if (isRecording) {
         source.connect(audioDestination);
       }
-      // Always connect to speakers
+      // Connect to speakers for playback
       source.connect(audioContext.destination);
 
-      // Set volume and play
+      // Apply volume settings and play sound
       audio.volume = isMuted ? 0 : currentVolume;
       await audio.play();
 
-      // Add visual feedback
+      // Add visual feedback animation
       bell.classList.add('playing');
       setTimeout(() => {
         bell.classList.remove('playing');
