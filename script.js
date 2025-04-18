@@ -543,22 +543,13 @@ function initializeBells() {
   const recordButton = document.getElementById('recordButton');
   const stopButton = document.getElementById('stopButton');
   const saveButton = document.getElementById('saveButton');
+  let audioContext = null;
+  let isRecording = false;
+  let audioDestination = null;
   let isMuted = false;
   let currentVolume = 1.0;
-  let isRecording = false;
-  let audioContext = null;
   let mediaRecorder = null;
   let audioChunks = [];
-  let audioDestination = null;
-
-  // References:
-  // - Web Audio API: https://developer.mozilla.org/en-US/docs/Web/API/Web_Audio_API
-  // - MediaRecorder API: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder
-  // - HTML5 Audio Element: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
-  
-  // Implementation examples:
-  // - MediaRecorder example: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/MediaRecorder#example
-  // - Audio recording and playback: https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/MediaRecorder#recording_a_media_element
 
   // Create volume slider with custom styling
   const volumeSlider = document.createElement('input');
@@ -592,14 +583,6 @@ function initializeBells() {
   volumeSlider.addEventListener('input', (e) => {
     currentVolume = parseFloat(e.target.value);
     isMuted = currentVolume === 0;
-    
-    // Update volume for all audio elements
-    bells.forEach(bell => {
-      const audio = bell.querySelector('audio');
-      if (audio) {
-        audio.volume = currentVolume;
-      }
-    });
   });
 
   // Click outside to hide volume slider
@@ -611,16 +594,16 @@ function initializeBells() {
 
   // Initialize audio context
   function initAudioContext() {
-    if (!audioContext) {
-      audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      audioDestination = audioContext.createMediaStreamDestination();
-    }
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    audioDestination = audioContext.createMediaStreamDestination();
   }
 
   // Setup recording functionality
   async function setupRecording() {
     try {
-      initAudioContext();
+      if (!audioContext) {
+        initAudioContext();
+      }
       
       // Create a media recorder using the audio destination stream
       mediaRecorder = new MediaRecorder(audioDestination.stream);
@@ -690,35 +673,38 @@ function initializeBells() {
     }
   });
 
-  // Modified bell click handler with audio context
+  // Bell click handler
   bells.forEach(bell => {
     bell.addEventListener('click', async function() {
-      const audio = bell.querySelector('audio');
-      if (audio) {
-        if (!audioContext) {
-          initAudioContext();
-        }
-
-        // Create audio source from the audio element
-        const source = audioContext.createMediaElementSource(audio);
-        
-        // Connect to both the audio destination (for recording) and speakers (for playback)
-        if (isRecording) {
-          source.connect(audioDestination);
-        }
-        source.connect(audioContext.destination);
-
-        // Play the sound
-        audio.currentTime = 0;
-        audio.volume = isMuted ? 0 : currentVolume;
-        await audio.play();
-
-        // Add visual feedback
-        bell.classList.add('playing');
-        setTimeout(() => {
-          bell.classList.remove('playing');
-        }, 500);
+      // Get the audio source URL
+      const audioSrc = bell.querySelector('audio').src;
+      
+      // Create a new audio element
+      const audio = new Audio(audioSrc);
+      
+      if (!audioContext) {
+        initAudioContext();
       }
+
+      // Create a new audio source
+      const source = audioContext.createMediaElementSource(audio);
+      
+      // Connect to destination if recording
+      if (isRecording) {
+        source.connect(audioDestination);
+      }
+      // Always connect to speakers
+      source.connect(audioContext.destination);
+
+      // Set volume and play
+      audio.volume = isMuted ? 0 : currentVolume;
+      await audio.play();
+
+      // Add visual feedback
+      bell.classList.add('playing');
+      setTimeout(() => {
+        bell.classList.remove('playing');
+      }, 500);
     });
   });
 }
