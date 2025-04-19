@@ -978,7 +978,6 @@ children of an element with class hero.*/
 
 /* 
  * File upload components
- * Reference: Dropzone.js: https://www.dropzone.dev/
  */
 .file-input-container {
   position: relative;
@@ -1125,7 +1124,6 @@ children of an element with class hero.*/
  * Audio Player Controls
  * Inspired by:
  * - HTML5 Audio Player: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/audio
- * - Howler.js player styling: https://howlerjs.com/
  */
 .player-controls {
   display: flex;
@@ -1269,8 +1267,6 @@ children of an element with class hero.*/
   color: #666;
   font-style: italic;
 }
-
-
 
 
 /* =================================
