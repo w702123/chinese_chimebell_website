@@ -28,6 +28,9 @@ body {
 }
 
 /* Header & Navigation - Applied to all pages */
+/* - Site header styling
+   - Navigation menu components
+   - Responsive menu toggle */
 header {
   height: 75px;
   display: flex;
@@ -38,6 +41,7 @@ header {
   background: #FFF;
 }
 
+/* Logo style */
 .logo {
   display: flex;
   align-items: center;
@@ -71,6 +75,7 @@ nav.topnav ul li {
   width: 90px;
 }
 
+/* Navigation links styling */
 nav.topnav a {
   display: block;
   width: 100%;
@@ -217,17 +222,6 @@ children of an element with class hero.*/
   background-color: #1C1B1C;
   color: #fff;
   border: 2px solid #FFD700;
-}
-
-.decoration {
-  position: relative;
-  align-self: center;
-  display: flex;
-  margin-top: 4px;
-  margin-bottom: -49px;
-  width: 175px;
-  flex-shrink: 0;
-  height: 28px;
 }
 
 /* Search section - Home page */
