@@ -3,123 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Chinese Chime Bells</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>About - Chinese Chime Bell</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Main wrapper for the entire page -->
     <div class="wrapper">
-        <!-- Header Section -->
+        <!-- Header section with logo and navigation -->
         <header>
             <div class="logo">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M6.50248 6.97519C6.78492 4.15083 9.16156 2 12 2C14.8384 2 17.2151 4.15083 17.4975 6.97519L17.7841 9.84133C17.8016 10.0156 17.8103 10.1028 17.8207 10.1885C17.9649 11.3717 18.3717 12.5077 19.0113 13.5135C19.0576 13.5865 19.1062 13.6593 19.2034 13.8051L20.0645 15.0968C20.8508 16.2763 21.244 16.866 21.0715 17.3412C21.0388 17.4311 20.9935 17.5158 20.9368 17.5928C20.6371 18 19.9283 18 18.5108 18H5.48923C4.07168 18 3.36291 18 3.06318 17.5928C3.00651 17.5158 2.96117 17.4311 2.92854 17.3412C2.75601 16.866 3.14916 16.2763 3.93548 15.0968L4.79661 13.8051C4.89378 13.6593 4.94236 13.5865 4.98873 13.5135C5.62832 12.5077 6.03508 11.3717 6.17927 10.1885C6.18972 10.1028 6.19844 10.0156 6.21587 9.84133L6.50248 6.97519Z" fill="black"/>
-                    <path d="M10.0681 20.6294C10.1821 20.7357 10.4332 20.8297 10.7825 20.8967C11.1318 20.9637 11.5597 21 12 21C12.4403 21 12.8682 20.9637 13.2175 20.8967C13.5668 20.8297 13.8179 20.7357 13.9319 20.6294" stroke="black" stroke-width="2" stroke-linecap="round"/>
-                </svg>
-                <h1>About Chinese Chime Bells</h1>
+                <img src="assets/logo.svg" alt="Logo" width="32" height="32">
+                <h1>Chinese Chime Bell</h1>
             </div>
-
-            <!-- Navigation menu -->
-            <nav class="topnav" id="myTopnav">
+            <!-- Responsive navigation menu -->
+            <nav class="topnav">
+                <button class="menu-toggle">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 12H21M3 6H21M3 18H21" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </button>
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="learn.html">Learn</a></li>
                     <li><a href="play.html">Play</a></li>
                     <li><a href="library.html">Library</a></li>
+                    <li><a href="about.html" class="active">About</a></li>
                 </ul>
-                <!-- Hamburger menu button for mobile -->
-                <button class="menu-toggle" id="menuToggle">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M4 6l16 0"></path>
-                        <path d="M4 12l16 0"></path>
-                        <path d="M4 18l16 0"></path>
-                    </svg>
-                </button>
             </nav>
         </header>
 
-        <main class="main-content">
-            <div class="about-content">
-                <section class="about-section">
-                    <h2>About This Project</h2>
-                    <p>
-                        This website is dedicated to preserving and sharing the rich cultural heritage of Chinese Chime Bells (Bianzhong).
-                        
-                </section>
+        <!-- Main content area -->
+        <main class="about-content">
+            <!-- Project introduction -->
+            <section class="about-section">
+                <h2>About This Project</h2>
+                <p>This website is dedicated to preserving and sharing the rich cultural heritage of Chinese Chime Bells (Bianzhong).</p>
+            </section>
 
+            <!-- References section -->
+            <section class="about-section">
+                <h2>References</h2>
 
-                <section class="about-section">
-                    <h2>References</h2>
-                   
-                    
-                    <h3>UI Components & Navigation</h3>
-                    <ul>
-                        <li>Responsive Top Navigation: <a href="https://www.w3schools.com/howto/howto_js_topnav_responsive.asp" target="_blank">W3Schools Responsive Navigation Tutorial</a></li>
-                        <li>Back to Top Button: <a href="https://www.w3schools.com/howto/howto_js_scroll_to_top.asp" target="_blank">W3Schools Back to Top Button</a></li>
-                        <li>Smooth Scrolling: <a href="https://www.w3schools.com/howto/howto_css_smooth_scroll.asp" target="_blank">W3Schools Smooth Scroll</a></li>
-                        <li>Tab Navigation: <a href="https://www.w3schools.com/howto/howto_js_tabs.asp" target="_blank">W3Schools Tab Navigation</a></li>
-                        <li>CSS Positioning: <a href="https://github.com/lange-lange/css-position" target="_blank">CSS Position Reference</a></li>
-                        <li>Animation Effects: <a href="https://codepen.io/matthewcain/pen/ZepbeR" target="_blank">Animation Reference</a></li>
-                        <li>Button State Management: <a href="https://www.w3schools.com/howto/howto_js_active_element.asp" target="_blank">Active Element Tutorial</a></li>
-                        <li>CSS Selectors: <a href="https://www.w3schools.com/css/css_selectors.asp" target="_blank">W3Schools CSS Selectors</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors" target="_blank">MDN ID Selectors</a></li>
-                    </ul>
+                
+                <h3>Font, Images and Content Sources</h3>
+                <ul>
+                    <!-- Font -->
+                    <li>Font: <a href="https://github.com/WCYS-Co/Hauora-Sans" target="_blank">Hauora Sans</a> 
+                        <ul>
+                            <li>An open-source sans-serif font family by WCYS</li>
+                        </ul>
+                    </li>
+                    <!-- Image sources and licenses -->
+                    <li>Images:
+                        <ul>
+                            <li>Adobe Stock - Education Licensed images </li>
+                            <li>Wikimedia Commons - Creative Commons License</li>
+                        </ul>
+                    </li>
+    
+                    <li>Content Sources:
+                        <ul>
+                            <li><a href="https://en.wikipedia.org/wiki/Bianzhong" target="_blank">Wikipedia - Bianzhong</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Ling_(bell)" target="_blank">Wikipedia - Ling (bell)</a></li>
+                            <li><a href="https://en.wikipedia.org/wiki/Tomb_of_Marquis_Yi_of_Zeng" target="_blank">Wikipedia - Tomb of Marquis Yi of Zeng</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-                    <h3>Audio Processing & Recording</h3>
-                    <ul>
-                        <li>MP3 Encoding: <a href="https://github.com/zhuker/lamejs" target="_blank">LameJS Library</a> - Used for WAV to MP3 conversion</li>
-                        <li>Enhanced MP3 Support: <a href="https://github.com/breezystack/lamejs" target="_blank">@breezystack/lamejs</a> - Fork with improved TypeScript support</li>
-                        <li>HTML5 Audio API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement" target="_blank">MDN Audio Element Documentation</a></li>
-                        <li>Audio Recording: <a href="https://franzeus.medium.com/record-audio-in-js-and-upload-as-wav-or-mp3-file-to-your-backend-1a2f35dea7e8" target="_blank">Audio Recording Guide</a></li>
-                        <li>MediaRecorder API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/isTypeSupported_static" target="_blank">MDN MediaRecorder Documentation</a></li>
-                        <li>Bell Samples: <a href="https://github.com/wizonce9/A-Novel-Physical-Modeling-Approach-for-Sound-Synthesis-of-Chinese-Chime-Bells/tree/master/Instrument/Bianzhong%20Samples" target="_blank">Chinese Chime Bells Samples</a></li>
-                    </ul>
+                <!--code references -->
+                <h3>UI Components & Navigation</h3>    
+                <ul>
+                    <li>HTML Link Target Attribute: <a href="https://www.w3schools.com/tags/att_a_target.asp" target="_blank">W3Schools Target Attribute </a></li>
+                    <li>Responsive Top Navigation: <a href="https://www.w3schools.com/howto/howto_js_topnav_responsive.asp" target="_blank">W3Schools Responsive Navigation </a></li>
+                    <li>Back to Top Button: <a href="https://www.w3schools.com/howto/howto_js_scroll_to_top.asp" target="_blank">W3Schools Back to Top Button</a></li>
+                    <li>Smooth Scrolling: <a href="https://www.w3schools.com/howto/howto_css_smooth_scroll.asp" target="_blank">W3Schools Smooth Scroll</a></li>
+                    <li>Tab Navigation: <a href="https://www.w3schools.com/howto/howto_js_tabs.asp" target="_blank">W3Schools Tab Navigation</a></li>
+                    <li>CSS Positioning: <a href="https://github.com/lange-lange/css-position" target="_blank">CSS Position Reference</a></li>
+                    <li>Animation Effects: <a href="https://codepen.io/matthewcain/pen/ZepbeR" target="_blank">Animation Reference</a></li>
+                    <li>Button State Management: <a href="https://www.w3schools.com/howto/howto_js_active_element.asp" target="_blank">Active Element Tutorial</a></li>
+                    <li>CSS Selectors: <a href="https://www.w3schools.com/css/css_selectors.asp" target="_blank">W3Schools CSS Selectors</a> and <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/ID_selectors" target="_blank">MDN ID Selectors</a></li>
+                </ul>
 
-                    <h3>File Handling & Storage</h3>
-                    <ul>
-                        <li>File API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/File" target="_blank">MDN File API Documentation</a></li>
-                        <li>FileReader API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" target="_blank">MDN FileReader Documentation</a></li>
-                        <li>Web Storage API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank">MDN Web Storage Documentation</a></li>
-                        <li>File Upload UI: <a href="https://codepen.io/piyushpd139/pen/ExmpXLz?utm_source=chatgpt.com" target="_blank">File Upload Design</a></li>
-                    </ul>
+                <h3>Audio Processing & Recording</h3>
+                <ul>
+                    <li>MP3 Encoding: <a href="https://github.com/zhuker/lamejs" target="_blank">LameJS Library</a> - Used for WAV to MP3 conversion</li>
+                    <li>Enhanced MP3 Support: <a href="https://github.com/breezystack/lamejs" target="_blank">@breezystack/lamejs</a> - Fork with improved TypeScript support</li>
+                    <li>HTML5 Audio API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLAudioElement" target="_blank">MDN Audio Element Documentation</a></li>
+                    <li>Audio Recording Problem: <a href="https://franzeus.medium.com/record-audio-in-js-and-upload-as-wav-or-mp3-file-to-your-backend-1a2f35dea7e8" target="_blank">Audio Recording Explanation</a></li>
+                    <li>MediaRecorder API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/MediaRecorder/isTypeSupported_static" target="_blank">MDN MediaRecorder Documentation</a></li>
+                    <li>Bell Samples: <a href="https://github.com/wizonce9/A-Novel-Physical-Modeling-Approach-for-Sound-Synthesis-of-Chinese-Chime-Bells/tree/master/Instrument/Bianzhong%20Samples" target="_blank">Chinese Chime Bells Samples</a></li>
+                </ul>
 
-                    <h3>Search & UI Functionality</h3>
-                    <ul>
-                        <li>Search Implementation: <a href="https://www.w3schools.com/howto/howto_js_filter_dropdown.asp" target="_blank">Filter Dropdown Tutorial</a></li>
-                        <li>Search Suggestions: <a href="https://www.w3schools.com/howto/howto_js_filter_list.asp" target="_blank">Filter List Tutorial</a></li>
-                        <li>Dynamic Content: <a href="https://www.w3schools.com/howto/howto_js_filter_elements.asp" target="_blank">Filter Elements Tutorial</a></li>
-                        <li>Search Box Design: <a href="https://www.w3schools.com/howto/howto_css_searchbar.asp" target="_blank">Search Bar Tutorial</a></li>
-                        <li>Clipboard Operations: <a href="https://www.w3schools.com/howto/howto_js_copy_clipboard.asp" target="_blank">Copy to Clipboard Tutorial</a></li>
-                    </ul>
+                <h3>File Handling & Storage</h3>
+                <ul>
+                    <li>File API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/File" target="_blank">MDN File API Documentation</a></li>
+                    <li>FileReader API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/FileReader" target="_blank">MDN FileReader Documentation</a></li>
+                    <li>Web Storage API: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API" target="_blank">MDN Web Storage Documentation</a></li>
+                    <li>File Upload UI: <a href="https://codepen.io/piyushpd139/pen/ExmpXLz?utm_source=chatgpt.com" target="_blank">File Upload Design</a></li>
+                    <li>File Upload: Components from Kartik Visweswaran (Krajee.com)</li>
+                    <li>License Terms: <a href="https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md" target="_blank">Bootstrap File Input License</a></li>
+                    <li>Grid System: <a href="https://getbootstrap.com/docs/5.0/layout/grid/" target="_blank">Bootstrap Grid System</a></li>
+                </ul>
 
-                    <h3>Music Player Interface</h3>
-                    <ul>
-                        <li>Music Upload: <a href="https://codepen.io/ankerpeet/pen/GQRdLK" target="_blank">Upload Interface Reference 1</a></li>
-                        <li>Player Design: <a href="https://codepen.io/nico-judge/pen/qBdvWKQ" target="_blank">Player Interface Reference 2</a></li>
-                        <li>Audio Controls: <a href="https://codepen.io/Tzyinc/pen/wvWKzjb" target="_blank">Audio Controls Reference</a></li>
-                        <li>Player Layout: <a href="https://codepen.io/mark_sottek/pen/yLrwPJe" target="_blank">Player Layout Reference</a></li>
-                        <li>Spotify-inspired Design: <a href="https://open.spotify.com" target="_blank">Spotify Layout Reference</a></li>
-                        <li>SoundCloud-inspired Interface: <a href="https://soundcloud.com" target="_blank">SoundCloud Interface Reference</a></li>
-                        <li>Howler.js Styling: <a href="https://howlerjs.com/" target="_blank">Howler.js Player Reference</a></li>
-                    </ul>
+                <h3>Search & UI Functionality</h3>
+                <ul>
+                    <li>Search Implementation: <a href="https://www.w3schools.com/howto/howto_js_filter_dropdown.asp" target="_blank">Filter Dropdown Tutorial</a></li>
+                    <li>Search Suggestions: <a href="https://www.w3schools.com/howto/howto_js_filter_list.asp" target="_blank">Filter List Tutorial</a></li>
+                    <li>Dynamic Content: <a href="https://www.w3schools.com/howto/howto_js_filter_elements.asp" target="_blank">Filter Elements Tutorial</a></li>
+                    <li>Search Box Design: <a href="https://www.w3schools.com/howto/howto_css_searchbar.asp" target="_blank">Search Bar Tutorial</a></li>
+                    <li>Clipboard Operations: <a href="https://www.w3schools.com/howto/howto_js_copy_clipboard.asp" target="_blank">Copy to Clipboard Tutorial</a></li>
+                </ul>
 
-                    <h3>Historical Content Sources</h3>
-                    <ul>
-                        <li>Bianzhong History: <a href="https://en.wikipedia.org/wiki/Bianzhong" target="_blank">Wikipedia - Bianzhong</a></li>
-                        <li>Tomb of Marquis Yi: <a href="https://en.wikipedia.org/wiki/Tomb_of_Marquis_Yi_of_Zeng" target="_blank">Wikipedia - Tomb of Marquis Yi</a></li>
-                        <li>Chinese Bells: <a href="https://en.wikipedia.org/wiki/Ling_(bell)" target="_blank">Wikipedia - Ling Bells</a></li>
-                    </ul>
+                <h3>Music Player Interface</h3>
+                <ul>
+                    <li>Music Upload: <a href="https://codepen.io/ankerpeet/pen/GQRdLK" target="_blank">Upload Interface Reference 1</a></li>
+                    <li>Player Design: <a href="https://codepen.io/nico-judge/pen/qBdvWKQ" target="_blank">Player Interface Reference 2</a></li>
+                    <li>Audio Controls: <a href="https://codepen.io/Tzyinc/pen/wvWKzjb" target="_blank">Audio Controls Reference</a></li>
+                    <li>Player Layout: <a href="https://codepen.io/mark_sottek/pen/yLrwPJe" target="_blank">Player Layout Reference</a></li>
+                </ul>
 
-                    <h3>Additional Components</h3>
-                    <ul>
-                        <li>File Upload: Components from Kartik Visweswaran (Krajee.com)</li>
-                        <li>License Terms: <a href="https://github.com/kartik-v/bootstrap-fileinput/blob/master/LICENSE.md" target="_blank">Bootstrap File Input License</a></li>
-                        <li>Grid System: <a href="https://getbootstrap.com/docs/5.0/layout/grid/" target="_blank">Bootstrap Grid System</a></li>
-                    </ul>
-
-                </section>
-            </div>
+                
+            </section>
         </main>
-
+    </div>
 
     <script src="script.js"></script>
 </body>
